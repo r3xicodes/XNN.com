@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Xana National News (XNN) - Your trusted source for breaking news, in-depth analysis, and comprehensive coverage of national and world events.">
+  <meta name="keywords" content="news, Xana, national news, breaking news, world news, politics, business, sports">
+  <meta name="author" content="Xana National News">
+  <meta property="og:title" content="Xana National News (XNN) - Breaking News & Analysis">
+  <meta property="og:description" content="Your trusted source for breaking news and in-depth analysis.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://xnn.xana.gov">
+  <meta name="twitter:card" content="summary_large_image">
+  <title>Xana National News (XNN) - Breaking News & Analysis</title>
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/components/header.css">
+  <link rel="stylesheet" href="assets/css/components/buttons.css">
+  <link rel="stylesheet" href="assets/css/components/cards.css">
+  <link rel="stylesheet" href="assets/css/components/ticker.css">
+  <link rel="stylesheet" href="assets/css/layouts/hero.css">
+  <link rel="stylesheet" href="assets/css/layouts/sections.css">
+  <link rel="stylesheet" href="assets/css/layouts/footer.css">
+</head>
+<body>
+  <!-- Skip Link -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  
+  <!-- Breaking News Ticker -->
+  <div class="xnn-ticker" id="breakingTicker">
+    <div class="xnn-ticker__label">
+      <i class="fas fa-bolt xnn-ticker__label-icon"></i>
+      <span class="xnn-ticker__label-text">Breaking</span>
+    </div>
+    <div class="xnn-ticker__content">
+      <div class="xnn-ticker__track" id="tickerTrack">
+        <!-- Ticker items injected by JS -->
+      </div>
+    </div>
+    <div class="xnn-ticker__actions">
+      <button class="xnn-ticker__btn" id="tickerPause" aria-label="Pause ticker">
+        <i class="fas fa-pause"></i>
+      </button>
+      <button class="xnn-ticker__btn" id="tickerClose" aria-label="Close ticker">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+  </div>
+  
+  <!-- Header -->
+  <header class="xnn-header" id="mainHeader">
+    <div class="xnn-header__inner">
+      <!-- Logo -->
+      <a href="index.html" class="xnn-logo">
+        <div class="xnn-logo__icon">X</div>
+        <div class="xnn-logo__text">
+          <span class="xnn-logo__title">XNN</span>
+          <span class="xnn-logo__subtitle">Xana National News</span>
+        </div>
+      </a>
+      
+      <!-- Main Navigation -->
+      <nav class="xnn-nav" aria-label="Main navigation">
+        <div class="xnn-nav__item">
+          <a href="index.html" class="xnn-nav__link active">Home</a>
+        </div>
+        <div class="xnn-nav__item">
+          <a href="pages/world.html" class="xnn-nav__link">
+            World
+            <i class="fas fa-chevron-down"></i>
+          </a>
+          <div class="xnn-dropdown xnn-dropdown--mega">
+            <div class="xnn-dropdown__grid">
+              <div>
+                <div class="xnn-dropdown__section-title">Atleos Region</div>
+                <div class="xnn-dropdown__list">
+                  <a href="pages/world/north-atleos.html" class="xnn-dropdown__item">North Atleos</a>
+                  <a href="pages/world/central-atleos.html" class="xnn-dropdown__item">Central Atleos</a>
+                  <a href="pages/world/south-atleos.html" class="xnn-dropdown__item">South Atleos</a>
+                </div>
+              </div>
+              <div>
+                <div class="xnn-dropdown__section-title">Eastern Regions</div>
+                <div class="xnn-dropdown__list">
+                  <a href="pages/world/adzkhri.html" class="xnn-dropdown__item">Adzkhri</a>
+                  <a href="pages/world/apoeln.html" class="xnn-dropdown__item">Apoeln</a>
+                  <a href="pages/world/aspen.html" class="xnn-dropdown__item">Aspen</a>
+                </div>
+              </div>
+              <div>
+                <div class="xnn-dropdown__section-title">Other Regions</div>
+                <div class="xnn-dropdown__list">
+                  <a href="pages/world/asterol.html" class="xnn-dropdown__item">Asterol</a>
+                  <a href="pages/world/antartica.html" class="xnn-dropdown__item">Antartica</a>
+                  <a href="pages/world/xara.html" class="xnn-dropdown__item">Xara</a>
+                  <a href="pages/world/labudike.html" class="xnn-dropdown__item">Labu'D'ike</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="xnn-nav__item">
+          <a href="pages/politics.html" class="xnn-nav__link">Politics</a>
+        </div>
+        <div class="xnn-nav__item">
+          <a href="pages/business.html" class="xnn-nav__link">Business</a>
+        </div>
+        <div class="xnn-nav__item">
+          <a href="pages/technology.html" class="xnn-nav__link">Technology</a>
+        </div>
+        <div class="xnn-nav__item">
+          <a href="pages/sports.html" class="xnn-nav__link">Sports</a>
+        </div>
+        <div class="xnn-nav__item">
+          <a href="pages/entertainment.html" class="xnn-nav__link">Entertainment</a>
+        </div>
+        <div class="xnn-nav__item">
+          <a href="pages/military.html" class="xnn-nav__link xnn-dropdown__item--highlight">
+            <i class="fas fa-shield-alt"></i> Military
+          </a>
+        </div>
+      </nav>
+      
+      <!-- Header Actions -->
+      <div class="xnn-header__actions">
+        <button class="xnn-header__search-btn" id="searchBtn" aria-label="Search">
+          <i class="fas fa-search"></i>
+        </button>
+        <a href="pages/subscribe.html" class="xnn-header__subscribe-btn">
+          Subscribe
+        </a>
+        <div class="xnn-user-menu" id="userMenu">
+          <button class="xnn-user-menu__trigger" id="userMenuTrigger">
+            <div class="xnn-user-menu__avatar">G</div>
+            <span class="xnn-user-menu__name">Guest</span>
+            <i class="fas fa-chevron-down"></i>
+          </button>
+          <div class="xnn-user-menu__dropdown">
+            <div class="xnn-user-menu__header">
+              <span class="xnn-user-menu__role">
+                <i class="fas fa-user"></i> Guest
+              </span>
+              <p class="xnn-user-menu__email">Sign in to access more features</p>
+            </div>
+            <div class="xnn-user-menu__list">
+              <a href="pages/account/login.html" class="xnn-user-menu__link">
+                <i class="fas fa-sign-in-alt"></i>
+                Sign In
+              </a>
+              <a href="pages/account/register.html" class="xnn-user-menu__link">
+                <i class="fas fa-user-plus"></i>
+                Create Account
+              </a>
+              <a href="pages/newsroom/dashboard.html" class="xnn-user-menu__link">
+                <i class="fas fa-newspaper"></i>
+                Newsroom Portal
+              </a>
+              <a href="pages/studio/control-room.html" class="xnn-user-menu__link">
+                <i class="fas fa-video"></i>
+                Broadcast Studio
+              </a>
+              <a href="pages/intelligence/command-center.html" class="xnn-user-menu__link">
+                <i class="fas fa-satellite-dish"></i>
+                Intelligence Dashboard
+              </a>
+            </div>
+          </div>
+        </div>
+        <button class="xnn-header__menu-btn" id="mobileMenuBtn" aria-label="Open menu">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+  
+  <!-- Mobile Menu -->
+  <div class="xnn-mobile-menu__overlay" id="mobileMenuOverlay"></div>
+  <div class="xnn-mobile-menu" id="mobileMenu">
+    <div class="xnn-mobile-menu__header">
+      <a href="index.html" class="xnn-logo">
+        <div class="xnn-logo__icon">X</div>
+        <span class="xnn-logo__title">XNN</span>
+      </a>
+      <button class="xnn-mobile-menu__close" id="mobileMenuClose" aria-label="Close menu">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+    <nav class="xnn-mobile-menu__list">
+      <div class="xnn-mobile-menu__item">
+        <a href="index.html" class="xnn-mobile-menu__link">
+          Home
+          <i class="fas fa-chevron-right"></i>
+        </a>
+      </div>
+      <div class="xnn-mobile-menu__item">
+        <a href="pages/world.html" class="xnn-mobile-menu__link" data-submenu="worldSubmenu">
+          World
+          <i class="fas fa-chevron-down"></i>
+        </a>
+        <div class="xnn-mobile-menu__submenu" id="worldSubmenu">
+          <a href="pages/world/north-atleos.html" class="xnn-mobile-menu__subitem">North Atleos</a>
+          <a href="pages/world/central-atleos.html" class="xnn-mobile-menu__subitem">Central Atleos</a>
+          <a href="pages/world/south-atleos.html" class="xnn-mobile-menu__subitem">South Atleos</a>
+          <a href="pages/world/adzkhri.html" class="xnn-mobile-menu__subitem">Adzkhri</a>
+          <a href="pages/world/apoeln.html" class="xnn-mobile-menu__subitem">Apoeln</a>
+          <a href="pages/world/aspen.html" class="xnn-mobile-menu__subitem">Aspen</a>
+          <a href="pages/world/asterol.html" class="xnn-mobile-menu__subitem">Asterol</a>
+          <a href="pages/world/antartica.html" class="xnn-mobile-menu__subitem">Antartica</a>
+          <a href="pages/world/xara.html" class="xnn-mobile-menu__subitem">Xara</a>
+          <a href="pages/world/labudike.html" class="xnn-mobile-menu__subitem">Labu'D'ike</a>
+        </div>
+      </div>
+      <div class="xnn-mobile-menu__item">
+        <a href="pages/politics.html" class="xnn-mobile-menu__link">
+          Politics
+          <i class="fas fa-chevron-right"></i>
+        </a>
+      </div>
+      <div class="xnn-mobile-menu__item">
+        <a href="pages/business.html" class="xnn-mobile-menu__link">
+          Business
+          <i class="fas fa-chevron-right"></i>
+        </a>
+      </div>
+      <div class="xnn-mobile-menu__item">
+        <a href="pages/technology.html" class="xnn-mobile-menu__link">
+          Technology
+          <i class="fas fa-chevron-right"></i>
+        </a>
+      </div>
+      <div class="xnn-mobile-menu__item">
+        <a href="pages/sports.html" class="xnn-mobile-menu__link">
+          Sports
+          <i class="fas fa-chevron-right"></i>
+        </a>
+      </div>
+      <div class="xnn-mobile-menu__item">
+        <a href="pages/entertainment.html" class="xnn-mobile-menu__link">
+          Entertainment
+          <i class="fas fa-chevron-right"></i>
+        </a>
+      </div>
+      <div class="xnn-mobile-menu__item">
+        <a href="pages/military.html" class="xnn-mobile-menu__link">
+          Military
+          <i class="fas fa-chevron-right"></i>
+        </a>
+      </div>
+      <div class="xnn-mobile-menu__item">
+        <a href="pages/games/word-challenge.html" class="xnn-mobile-menu__link">
+          Games
+          <i class="fas fa-chevron-right"></i>
+        </a>
+      </div>
+    </nav>
+  </div>
+  
+  <!-- Search Overlay -->
+  <div class="xnn-search-overlay" id="searchOverlay">
+    <div class="xnn-search-overlay__container">
+      <div class="xnn-search-overlay__input-wrapper">
+        <i class="fas fa-search xnn-search-overlay__icon"></i>
+        <input type="text" class="xnn-search-overlay__input" id="searchInput" placeholder="Search news, topics, and more..." autocomplete="off">
+        <button class="xnn-search-overlay__close" id="searchClose" aria-label="Close search">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="xnn-search-overlay__suggestions">
+        <p class="xnn-search-overlay__suggestions-title">Trending Searches</p>
+        <div class="xnn-search-overlay__suggestions-list">
+          <a href="#" class="xnn-search-overlay__suggestion">Presidential Address</a>
+          <a href="#" class="xnn-search-overlay__suggestion">Economic Summit</a>
+          <a href="#" class="xnn-search-overlay__suggestion">Climate Report</a>
+          <a href="#" class="xnn-search-overlay__suggestion">Tech Innovation</a>
+          <a href="#" class="xnn-search-overlay__suggestion">Sports Championship</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Main Content -->
+  <main id="main-content" class="xnn-main">
+    <!-- Hero Section -->
+    <section class="xnn-hero">
+      <div class="xnn-hero__featured" id="heroFeatured">
+        <!-- Featured story injected by JS -->
+      </div>
+      <div class="xnn-hero__sidebar">
+        <div class="xnn-hero__top-stories" id="topStories">
+          <h2 class="xnn-hero__section-title">Top Stories</h2>
+          <!-- Top stories injected by JS -->
+        </div>
+      </div>
+    </section>
+    
+    <!-- Category Grid -->
+    <section class="xnn-section xnn-section--categories">
+      <div class="container">
+        <div class="xnn-section__header">
+          <h2 class="xnn-section__title">Explore Topics</h2>
+        </div>
+        <div class="xnn-category-grid" id="categoryGrid">
+          <!-- Categories injected by JS -->
+        </div>
+      </div>
+    </section>
+    
+    <!-- Live Coverage Banner -->
+    <section class="xnn-live-banner" id="liveBanner">
+      <div class="container">
+        <div class="xnn-live-banner__inner">
+          <div class="xnn-live-banner__indicator">
+            <span class="xnn-live-banner__dot"></span>
+            <span class="xnn-live-banner__text">LIVE</span>
+          </div>
+          <div class="xnn-live-banner__content">
+            <h3 class="xnn-live-banner__title">Parliamentary Session: Budget Debate 2026</h3>
+            <p class="xnn-live-banner__description">Live coverage of the national budget debate with real-time analysis</p>
+          </div>
+          <a href="pages/live.html" class="xnn-btn xnn-btn--accent xnn-btn--rounded">
+            <i class="fas fa-play"></i>
+            Watch Live
+          </a>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Latest News Section -->
+    <section class="xnn-section">
+      <div class="container">
+        <div class="xnn-section__header">
+          <h2 class="xnn-section__title">Latest News</h2>
+          <a href="pages/latest.html" class="xnn-section__link">
+            View All <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
+        <div class="xnn-news-grid" id="latestNewsGrid">
+          <!-- Latest news injected by JS -->
+        </div>
+      </div>
+    </section>
+    
+    <!-- Military Section -->
+    <section class="xnn-section xnn-section--military">
+      <div class="container">
+        <div class="xnn-section__header">
+          <h2 class="xnn-section__title">
+            <i class="fas fa-shield-alt"></i>
+            Military & Defense
+          </h2>
+          <a href="pages/military.html" class="xnn-section__link">
+            View All <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
+        <div class="xnn-military-grid" id="militaryGrid">
+          <!-- Military news injected by JS -->
+        </div>
+      </div>
+    </section>
+    
+    <!-- World Spotlight -->
+    <section class="xnn-section xnn-section--world">
+      <div class="container">
+        <div class="xnn-section__header">
+          <h2 class="xnn-section__title">
+            <i class="fas fa-globe"></i>
+            World Spotlight
+          </h2>
+          <a href="pages/world.html" class="xnn-section__link">
+            View All <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
+        <div class="xnn-world-grid" id="worldGrid">
+          <!-- World news injected by JS -->
+        </div>
+      </div>
+    </section>
+    
+    <!-- Video Spotlight -->
+    <section class="xnn-section xnn-section--videos">
+      <div class="container">
+        <div class="xnn-section__header">
+          <h2 class="xnn-section__title">
+            <i class="fas fa-video"></i>
+            Video Spotlight
+          </h2>
+          <a href="pages/videos.html" class="xnn-section__link">
+            View All <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
+        <div class="xnn-video-grid" id="videoGrid">
+          <!-- Videos injected by JS -->
+        </div>
+      </div>
+    </section>
+    
+    <!-- Opinion Section -->
+    <section class="xnn-section xnn-section--opinion">
+      <div class="container">
+        <div class="xnn-section__header">
+          <h2 class="xnn-section__title">
+            <i class="fas fa-comment-alt"></i>
+            Opinion & Analysis
+          </h2>
+          <a href="pages/opinion.html" class="xnn-section__link">
+            View All <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
+        <div class="xnn-opinion-grid" id="opinionGrid">
+          <!-- Opinion articles injected by JS -->
+        </div>
+      </div>
+    </section>
+    
+    <!-- Trending & Most Read -->
+    <section class="xnn-section xnn-section--trending">
+      <div class="container">
+        <div class="xnn-trending-tabs">
+          <button class="xnn-trending-tab active" data-tab="trending">Trending Now</button>
+          <button class="xnn-trending-tab" data-tab="mostRead">Most Read</button>
+        </div>
+        <div class="xnn-trending-content active" id="trendingContent">
+          <!-- Trending articles injected by JS -->
+        </div>
+        <div class="xnn-trending-content" id="mostReadContent">
+          <!-- Most read articles injected by JS -->
+        </div>
+      </div>
+    </section>
+    
+    <!-- Newsletter Section -->
+    <section class="xnn-section xnn-section--newsletter">
+      <div class="container">
+        <div class="xnn-newsletter">
+          <div class="xnn-newsletter__content">
+            <h2 class="xnn-newsletter__title">Stay Informed</h2>
+            <p class="xnn-newsletter__description">
+              Subscribe to our newsletter for the latest news, analysis, and exclusive content delivered directly to your inbox.
+            </p>
+          </div>
+          <form class="xnn-newsletter__form" id="newsletterForm">
+            <div class="xnn-newsletter__input-group">
+              <input type="email" class="xnn-newsletter__input" placeholder="Enter your email address" required>
+              <button type="submit" class="xnn-btn xnn-btn--accent xnn-btn--lg">
+                Subscribe
+              </button>
+            </div>
+            <p class="xnn-newsletter__privacy">
+              By subscribing, you agree to our <a href="pages/legal/privacy.html">Privacy Policy</a> and <a href="pages/legal/terms.html">Terms of Service</a>.
+            </p>
+          </form>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Games Section -->
+    <section class="xnn-section xnn-section--games">
+      <div class="container">
+        <div class="xnn-section__header">
+          <h2 class="xnn-section__title">
+            <i class="fas fa-gamepad"></i>
+            XNN Games
+          </h2>
+          <a href="pages/games/index.html" class="xnn-section__link">
+            Play All <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
+        <div class="xnn-games-grid">
+          <a href="pages/games/word-challenge.html" class="xnn-game-card">
+            <div class="xnn-game-card__icon">
+              <i class="fas fa-puzzle-piece"></i>
+            </div>
+            <h3 class="xnn-game-card__title">Xana Word Challenge</h3>
+            <p class="xnn-game-card__description">Test your vocabulary with our daily word puzzle</p>
+          </a>
+          <a href="pages/games/crossword.html" class="xnn-game-card">
+            <div class="xnn-game-card__icon">
+              <i class="fas fa-th"></i>
+            </div>
+            <h3 class="xnn-game-card__title">Daily Crossword</h3>
+            <p class="xnn-game-card__description">Challenge yourself with our daily crossword</p>
+          </a>
+          <a href="pages/games/trivia.html" class="xnn-game-card">
+            <div class="xnn-game-card__icon">
+              <i class="fas fa-brain"></i>
+            </div>
+            <h3 class="xnn-game-card__title">News Trivia</h3>
+            <p class="xnn-game-card__description">Test your knowledge of current events</p>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+  
+  <!-- Footer -->
+  <footer class="xnn-footer">
+    <div class="container">
+      <div class="xnn-footer__grid">
+        <div class="xnn-footer__brand">
+          <a href="index.html" class="xnn-logo">
+            <div class="xnn-logo__icon">X</div>
+            <div class="xnn-logo__text">
+              <span class="xnn-logo__title">XNN</span>
+              <span class="xnn-logo__subtitle">Xana National News</span>
+            </div>
+          </a>
+          <p class="xnn-footer__tagline">
+            Your trusted source for breaking news, in-depth analysis, and comprehensive coverage of national and world events.
+          </p>
+          <div class="xnn-footer__social">
+            <a href="#" class="xnn-footer__social-link" aria-label="Facebook">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="#" class="xnn-footer__social-link" aria-label="Twitter">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a href="#" class="xnn-footer__social-link" aria-label="Instagram">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="#" class="xnn-footer__social-link" aria-label="YouTube">
+              <i class="fab fa-youtube"></i>
+            </a>
+            <a href="#" class="xnn-footer__social-link" aria-label="LinkedIn">
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+          </div>
+        </div>
+        <div class="xnn-footer__nav">
+          <h3 class="xnn-footer__nav-title">Sections</h3>
+          <ul class="xnn-footer__nav-list">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="pages/world.html">World</a></li>
+            <li><a href="pages/politics.html">Politics</a></li>
+            <li><a href="pages/business.html">Business</a></li>
+            <li><a href="pages/technology.html">Technology</a></li>
+            <li><a href="pages/sports.html">Sports</a></li>
+            <li><a href="pages/entertainment.html">Entertainment</a></li>
+            <li><a href="pages/military.html">Military</a></li>
+          </ul>
+        </div>
+        <div class="xnn-footer__nav">
+          <h3 class="xnn-footer__nav-title">Company</h3>
+          <ul class="xnn-footer__nav-list">
+            <li><a href="pages/corporate/about.html">About Us</a></li>
+            <li><a href="pages/corporate/careers.html">Careers</a></li>
+            <li><a href="pages/corporate/press.html">Press Room</a></li>
+            <li><a href="pages/corporate/advertise.html">Advertise</a></li>
+            <li><a href="pages/corporate/contact.html">Contact Us</a></li>
+            <li><a href="pages/corporate/investors.html">Investor Relations</a></li>
+          </ul>
+        </div>
+        <div class="xnn-footer__nav">
+          <h3 class="xnn-footer__nav-title">Support</h3>
+          <ul class="xnn-footer__nav-list">
+            <li><a href="pages/legal/help.html">Help Center</a></li>
+            <li><a href="pages/legal/faq.html">FAQ</a></li>
+            <li><a href="pages/subscribe.html">Subscriptions</a></li>
+            <li><a href="pages/account/login.html">Account</a></li>
+            <li><a href="pages/corporate/sitemap.html">Sitemap</a></li>
+            <li><a href="pages/corporate/accessibility.html">Accessibility</a></li>
+          </ul>
+        </div>
+        <div class="xnn-footer__nav">
+          <h3 class="xnn-footer__nav-title">Legal</h3>
+          <ul class="xnn-footer__nav-list">
+            <li><a href="pages/legal/privacy.html">Privacy Policy</a></li>
+            <li><a href="pages/legal/terms.html">Terms of Service</a></li>
+            <li><a href="pages/legal/cookies.html">Cookie Policy</a></li>
+            <li><a href="pages/legal/gdpr.html">GDPR Compliance</a></li>
+            <li><a href="pages/legal/copyright.html">Copyright</a></li>
+            <li><a href="pages/legal/dmca.html">DMCA</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="xnn-footer__bottom">
+        <p class="xnn-footer__copyright">
+          &copy; 2026 Xana National News (XNN). All rights reserved.
+        </p>
+        <div class="xnn-footer__badges">
+          <span class="xnn-footer__badge">
+            <i class="fas fa-shield-alt"></i> Secure
+          </span>
+          <span class="xnn-footer__badge">
+            <i class="fas fa-check-circle"></i> Verified
+          </span>
+        </div>
+      </div>
+    </div>
+  </footer>
+  
+  <!-- Back to Top Button -->
+  <button class="xnn-back-to-top" id="backToTop" aria-label="Back to top">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+  
+  <!-- JavaScript Modules -->
+  <script type="module" src="assets/js/main.js"></script>
+</body>
+</html>

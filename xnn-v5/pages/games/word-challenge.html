@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Xana Word Challenge - XNN Games</title>
+  
+  <link rel="icon" type="image/svg+xml" href="../../assets/images/favicon.svg">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="../../assets/css/main.css">
+  <link rel="stylesheet" href="../../assets/css/components/header.css">
+  <link rel="stylesheet" href="../../assets/css/components/buttons.css">
+  <link rel="stylesheet" href="../../assets/css/layouts/footer.css">
+  
+  <style>
+    .xnn-game-page {
+      padding-top: var(--header-height);
+      min-height: 100vh;
+      background: linear-gradient(135deg, var(--xnn-primary) 0%, var(--xnn-primary-dark) 100%);
+    }
+    
+    .xnn-game-container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: var(--space-8) var(--space-4);
+    }
+    
+    .xnn-game-header {
+      text-align: center;
+      margin-bottom: var(--space-8);
+      color: var(--xnn-white);
+    }
+    
+    .xnn-game-header__logo {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-3);
+      margin-bottom: var(--space-4);
+    }
+    
+    .xnn-game-header__logo-icon {
+      width: 48px;
+      height: 48px;
+      background: var(--xnn-white);
+      color: var(--xnn-primary);
+      border-radius: var(--radius-lg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-size: var(--text-2xl);
+      font-weight: var(--font-bold);
+    }
+    
+    .xnn-game-header__title {
+      font-family: var(--font-heading);
+      font-size: var(--text-4xl);
+      font-weight: var(--font-bold);
+      margin-bottom: var(--space-2);
+    }
+    
+      .xnn-game-header__subtitle {
+      font-size: var(--text-lg);
+      opacity: 0.8;
+    }
+    
+    .xnn-wordle {
+      background: var(--xnn-white);
+      border-radius: var(--radius-xl);
+      padding: var(--space-8);
+      box-shadow: var(--shadow-2xl);
+    }
+    
+    .xnn-wordle__stats {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-8);
+      margin-bottom: var(--space-6);
+      padding-bottom: var(--space-6);
+      border-bottom: 1px solid var(--xnn-gray-200);
+    }
+    
+    .xnn-wordle__stat {
+      text-align: center;
+    }
+    
+    .xnn-wordle__stat-value {
+      font-family: var(--font-display);
+      font-size: var(--text-3xl);
+      font-weight: var(--font-bold);
+      color: var(--xnn-primary);
+    }
+    
+    .xnn-wordle__stat-label {
+      font-size: var(--text-sm);
+      color: var(--xnn-gray-500);
+    }
+    
+    .xnn-wordle__grid {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+      margin-bottom: var(--space-6);
+    }
+    
+    .xnn-wordle__row {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-2);
+    }
+    
+    .xnn-wordle__tile {
+      width: 64px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid var(--xnn-gray-300);
+      border-radius: var(--radius-md);
+      font-family: var(--font-display);
+      font-size: var(--text-2xl);
+      font-weight: var(--font-bold);
+      text-transform: uppercase;
+      transition: all var(--transition-base);
+    }
+    
+    .xnn-wordle__tile.filled {
+      border-color: var(--xnn-gray-500);
+      animation: pop 0.1s ease-in-out;
+    }
+    
+    .xnn-wordle__tile.correct {
+      background: var(--xnn-success);
+      border-color: var(--xnn-success);
+      color: var(--xnn-white);
+      animation: flip 0.5s ease-in-out;
+    }
+    
+    .xnn-wordle__tile.present {
+      background: var(--xnn-warning);
+      border-color: var(--xnn-warning);
+      color: var(--xnn-white);
+      animation: flip 0.5s ease-in-out;
+    }
+    
+    .xnn-wordle__tile.absent {
+      background: var(--xnn-gray-500);
+      border-color: var(--xnn-gray-500);
+      color: var(--xnn-white);
+      animation: flip 0.5s ease-in-out;
+    }
+    
+    @keyframes pop {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+    
+    @keyframes flip {
+      0% { transform: rotateX(0); }
+      50% { transform: rotateX(90deg); }
+      100% { transform: rotateX(0); }
+    }
+    
+    .xnn-wordle__keyboard {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+    }
+    
+    .xnn-wordle__keyboard-row {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-1);
+    }
+    
+    .xnn-wordle__key {
+      min-width: 36px;
+      height: 48px;
+      padding: 0 var(--space-2);
+      background: var(--xnn-gray-200);
+      border: none;
+      border-radius: var(--radius-md);
+      font-family: var(--font-display);
+      font-size: var(--text-base);
+      font-weight: var(--font-bold);
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all var(--transition-fast);
+    }
+    
+    .xnn-wordle__key:hover {
+      background: var(--xnn-gray-300);
+    }
+    
+    .xnn-wordle__key.wide {
+      min-width: 64px;
+      font-size: var(--text-sm);
+    }
+    
+    .xnn-wordle__key.correct {
+      background: var(--xnn-success);
+      color: var(--xnn-white);
+    }
+    
+    .xnn-wordle__key.present {
+      background: var(--xnn-warning);
+      color: var(--xnn-white);
+    }
+    
+    .xnn-wordle__key.absent {
+      background: var(--xnn-gray-500);
+      color: var(--xnn-white);
+    }
+    
+    .xnn-wordle__message {
+      text-align: center;
+      padding: var(--space-4);
+      margin-bottom: var(--space-4);
+      border-radius: var(--radius-lg);
+      font-weight: var(--font-semibold);
+      min-height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .xnn-wordle__message.success {
+      background: var(--xnn-success-light);
+      color: var(--xnn-success);
+    }
+    
+    .xnn-wordle__message.error {
+      background: var(--xnn-error-light);
+      color: var(--xnn-error);
+    }
+    
+    .xnn-wordle__message.info {
+      background: var(--xnn-info-light);
+      color: var(--xnn-info);
+    }
+    
+    .xnn-wordle__actions {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-3);
+      margin-top: var(--space-6);
+    }
+    
+    .xnn-game-footer {
+      text-align: center;
+      margin-top: var(--space-8);
+      color: rgba(255, 255, 255, 0.7);
+    }
+    
+    .xnn-game-footer__links {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-4);
+      margin-top: var(--space-4);
+    }
+    
+    .xnn-game-footer__links a {
+      color: var(--xnn-white);
+      text-decoration: underline;
+    }
+    
+    @media (max-width: 640px) {
+      .xnn-wordle__tile {
+        width: 52px;
+        height: 52px;
+        font-size: var(--text-xl);
+      }
+      
+      .xnn-wordle__key {
+        min-width: 28px;
+        height: 40px;
+        padding: 0 var(--space-1);
+        font-size: var(--text-sm);
+      }
+      
+      .xnn-wordle__key.wide {
+        min-width: 48px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="xnn-header" id="mainHeader" style="background: transparent; border: none;">
+    <div class="xnn-header__inner">
+      <a href="../../index.html" class="xnn-logo">
+        <div class="xnn-logo__icon" style="background: var(--xnn-white); color: var(--xnn-primary);">X</div>
+        <div class="xnn-logo__text">
+          <span class="xnn-logo__title" style="color: var(--xnn-white);">XNN</span>
+          <span class="xnn-logo__subtitle" style="color: rgba(255,255,255,0.7);">Games</span>
+        </div>
+      </a>
+      
+      <nav class="xnn-nav" aria-label="Game navigation">
+        <div class="xnn-nav__item">
+          <a href="word-challenge.html" class="xnn-nav__link active" style="color: var(--xnn-white);">Word Challenge</a>
+        </div>
+        <div class="xnn-nav__item">
+          <a href="crossword.html" class="xnn-nav__link" style="color: rgba(255,255,255,0.8);">Crossword</a>
+        </div>
+        <div class="xnn-nav__item">
+          <a href="trivia.html" class="xnn-nav__link" style="color: rgba(255,255,255,0.8);">Trivia</a>
+        </div>
+      </nav>
+      
+      <div class="xnn-header__actions">
+        <a href="../../index.html" class="xnn-btn xnn-btn--outline" style="border-color: rgba(255,255,255,0.3); color: white;">
+          <i class="fas fa-arrow-left"></i>
+          Back to News
+        </a>
+      </div>
+    </div>
+  </header>
+  
+  <!-- Game Page -->
+  <main class="xnn-game-page">
+    <div class="xnn-game-container">
+      <div class="xnn-game-header">
+        <div class="xnn-game-header__logo">
+          <div class="xnn-game-header__logo-icon">
+            <i class="fas fa-puzzle-piece"></i>
+          </div>
+        </div>
+        <h1 class="xnn-game-header__title">Xana Word Challenge</h1>
+        <p class="xnn-game-header__subtitle">Guess the 5-letter word in 6 tries</p>
+      </div>
+      
+      <div class="xnn-wordle">
+        <!-- Stats -->
+        <div class="xnn-wordle__stats">
+          <div class="xnn-wordle__stat">
+            <div class="xnn-wordle__stat-value" id="gamesPlayed">0</div>
+            <div class="xnn-wordle__stat-label">Played</div>
+          </div>
+          <div class="xnn-wordle__stat">
+            <div class="xnn-wordle__stat-value" id="winRate">0%</div>
+            <div class="xnn-wordle__stat-label">Win Rate</div>
+          </div>
+          <div class="xnn-wordle__stat">
+            <div class="xnn-wordle__stat-value" id="currentStreak">0</div>
+            <div class="xnn-wordle__stat-label">Streak</div>
+          </div>
+          <div class="xnn-wordle__stat">
+            <div class="xnn-wordle__stat-value" id="maxStreak">0</div>
+            <div class="xnn-wordle__stat-label">Max Streak</div>
+          </div>
+        </div>
+        
+        <!-- Message -->
+        <div class="xnn-wordle__message info" id="gameMessage">Type your guess and press ENTER</div>
+        
+        <!-- Grid -->
+        <div class="xnn-wordle__grid" id="gameGrid"></div>
+        
+        <!-- Keyboard -->
+        <div class="xnn-wordle__keyboard" id="keyboard"></div>
+        
+        <!-- Actions -->
+        <div class="xnn-wordle__actions">
+          <button class="xnn-btn xnn-btn--secondary" id="hintBtn">
+            <i class="fas fa-lightbulb"></i>
+            Hint
+          </button>
+          <button class="xnn-btn xnn-btn--primary" id="newGameBtn" style="display: none;">
+            <i class="fas fa-redo"></i>
+            New Game
+          </button>
+        </div>
+      </div>
+      
+      <div class="xnn-game-footer">
+        <p>A new word is available each day!</p>
+        <div class="xnn-game-footer__links">
+          <a href="#" id="howToPlay">How to Play</a>
+          <a href="#" id="shareScore">Share Score</a>
+        </div>
+      </div>
+    </div>
+  </main>
+  
+  <script>
+    // Word list (simplified for demo)
+    const WORDS = [
+      'ABOUT', 'ABOVE', 'ABUSE', 'ACTOR', 'ACUTE', 'ADMIT', 'ADOPT', 'ADULT', 'AFTER', 'AGAIN',
+      'AGENT', 'AGREE', 'AHEAD', 'ALARM', 'ALBUM', 'ALERT', 'ALIKE', 'ALIVE', 'ALLOW', 'ALONE',
+      'ALONG', 'ALTER', 'AMONG', 'ANGER', 'ANGLE', 'ANGRY', 'APART', 'APPLE', 'APPLY', 'ARENA',
+      'ARGUE', 'ARISE', 'ARRAY', 'ASIDE', 'ASSET', 'AUDIO', 'AUDIT', 'AVOID', 'AWARD', 'AWARE',
+      'BADLY', 'BAKER', 'BASIS', 'BEACH', 'BEGAN', 'BEGIN', 'BEGUN', 'BEING', 'BELOW', 'BENCH',
+      'BILLY', 'BIRTH', 'BLACK', 'BLAME', 'BLIND', 'BLOCK', 'BLOOD', 'BOARD', 'BOOST', 'BOOTH',
+      'BOUND', 'BRAIN', 'BRAND', 'BREAD', 'BREAK', 'BREED', 'BRIEF', 'BRING', 'BROAD', 'BROKE',
+      'BROWN', 'BUILD', 'BUILT', 'BUYER', 'CABLE', 'CALIF', 'CARRY', 'CATCH', 'CAUSE', 'CHAIN',
+      'CHAIR', 'CHART', 'CHASE', 'CHEAP', 'CHECK', 'CHEST', 'CHIEF', 'CHILD', 'CHINA', 'CHOSE',
+      'CIVIL', 'CLAIM', 'CLASS', 'CLEAN', 'CLEAR', 'CLICK', 'CLOCK', 'CLOSE', 'COACH', 'COAST'
+    ];
+    
+    class WordleGame {
+      constructor() {
+        this.targetWord = this.getDailyWord();
+        this.currentRow = 0;
+        this.currentCol = 0;
+        this.guesses = [];
+        this.gameOver = false;
+        this.won = false;
+        this.stats = this.loadStats();
+        
+        this.grid = document.getElementById('gameGrid');
+        this.keyboard = document.getElementById('keyboard');
+        this.message = document.getElementById('gameMessage');
+        this.newGameBtn = document.getElementById('newGameBtn');
+        
+        this.init();
+      }
+      
+      init() {
+        this.createGrid();
+        this.createKeyboard();
+        this.updateStats();
+        this.setupEventListeners();
+        
+        // Check for saved game
+        const saved = localStorage.getItem('xnn_wordle_game');
+        if (saved) {
+          const game = JSON.parse(saved);
+          if (game.word === this.targetWord && game.date === new Date().toDateString()) {
+            this.restoreGame(game);
+          }
+        }
+      }
+      
+      getDailyWord() {
+        const today = new Date();
+        const index = (today.getFullYear() * 365 + today.getMonth() * 31 + today.getDate()) % WORDS.length;
+        return WORDS[index];
+      }
+      
+      createGrid() {
+        this.grid.innerHTML = '';
+        for (let i = 0; i < 6; i++) {
+          const row = document.createElement('div');
+          row.className = 'xnn-wordle__row';
+          for (let j = 0; j < 5; j++) {
+            const tile = document.createElement('div');
+            tile.className = 'xnn-wordle__tile';
+            tile.dataset.row = i;
+            tile.dataset.col = j;
+            row.appendChild(tile);
+          }
+          this.grid.appendChild(row);
+        }
+      }
+      
+      createKeyboard() {
+        const rows = [
+          'QWERTYUIOP',
+          'ASDFGHJKL',
+          'ZXCVBNM'
+        ];
+        
+        this.keyboard.innerHTML = '';
+        
+        rows.forEach((row, i) => {
+          const rowDiv = document.createElement('div');
+          rowDiv.className = 'xnn-wordle__keyboard-row';
+          
+          if (i === 2) {
+            const enter = document.createElement('button');
+            enter.className = 'xnn-wordle__key wide';
+            enter.textContent = 'ENTER';
+            enter.onclick = () => this.submitGuess();
+            rowDiv.appendChild(enter);
+          }
+          
+          row.split('').forEach(key => {
+            const btn = document.createElement('button');
+            btn.className = 'xnn-wordle__key';
+            btn.textContent = key;
+            btn.dataset.key = key;
+            btn.onclick = () => this.addLetter(key);
+            rowDiv.appendChild(btn);
+          });
+          
+          if (i === 2) {
+            const backspace = document.createElement('button');
+            backspace.className = 'xnn-wordle__key wide';
+            backspace.innerHTML = '<i class="fas fa-backspace"></i>';
+            backspace.onclick = () => this.removeLetter();
+            rowDiv.appendChild(backspace);
+          }
+          
+          this.keyboard.appendChild(rowDiv);
+        });
+      }
+      
+      setupEventListeners() {
+        document.addEventListener('keydown', (e) => {
+          if (this.gameOver) return;
+          
+          if (e.key === 'Enter') {
+            this.submitGuess();
+          } else if (e.key === 'Backspace') {
+            this.removeLetter();
+          } else if (/^[a-zA-Z]$/.test(e.key)) {
+            this.addLetter(e.key.toUpperCase());
+          }
+        });
+        
+        this.newGameBtn.onclick = () => this.reset();
+        
+        document.getElementById('hintBtn').onclick = () => this.showHint();
+        
+        document.getElementById('howToPlay').onclick = (e) => {
+          e.preventDefault();
+          this.showHowToPlay();
+        };
+        
+        document.getElementById('shareScore').onclick = (e) => {
+          e.preventDefault();
+          this.shareScore();
+        };
+      }
+      
+      addLetter(letter) {
+        if (this.gameOver || this.currentCol >= 5) return;
+        
+        const tile = this.getTile(this.currentRow, this.currentCol);
+        tile.textContent = letter;
+        tile.classList.add('filled');
+        
+        this.currentCol++;
+      }
+      
+      removeLetter() {
+        if (this.gameOver || this.currentCol === 0) return;
+        
+        this.currentCol--;
+        const tile = this.getTile(this.currentRow, this.currentCol);
+        tile.textContent = '';
+        tile.classList.remove('filled');
+      }
+      
+      getTile(row, col) {
+        return this.grid.querySelector(`[data-row="${row}"][data-col="${col}"]`);
+      }
+      
+      submitGuess() {
+        if (this.gameOver || this.currentCol < 5) {
+          this.showMessage('Not enough letters', 'error');
+          return;
+        }
+        
+        const guess = [];
+        for (let i = 0; i < 5; i++) {
+          guess.push(this.getTile(this.currentRow, i).textContent);
+        }
+        
+        const word = guess.join('');
+        
+        if (!WORDS.includes(word)) {
+          this.showMessage('Not in word list', 'error');
+          return;
+        }
+        
+        this.checkGuess(word);
+        this.guesses.push(word);
+        this.saveGame();
+      }
+      
+      checkGuess(word) {
+        const targetLetters = this.targetWord.split('');
+        const guessLetters = word.split('');
+        const results = [];
+        
+        // First pass: check for correct positions
+        for (let i = 0; i < 5; i++) {
+          if (guessLetters[i] === targetLetters[i]) {
+            results[i] = 'correct';
+            targetLetters[i] = null;
+            guessLetters[i] = null;
+          }
+        }
+        
+        // Second pass: check for present letters
+        for (let i = 0; i < 5; i++) {
+          if (guessLetters[i] !== null) {
+            const index = targetLetters.indexOf(guessLetters[i]);
+            if (index !== -1) {
+              results[i] = 'present';
+              targetLetters[index] = null;
+            } else {
+              results[i] = 'absent';
+            }
+          }
+        }
+        
+        // Apply results with animation
+        for (let i = 0; i < 5; i++) {
+          setTimeout(() => {
+            const tile = this.getTile(this.currentRow, i);
+            tile.classList.add(results[i]);
+            
+            // Update keyboard
+            const key = this.keyboard.querySelector(`[data-key="${word[i]}"]`);
+            if (key) {
+              if (results[i] === 'correct') {
+                key.classList.remove('present', 'absent');
+                key.classList.add('correct');
+              } else if (results[i] === 'present' && !key.classList.contains('correct')) {
+                key.classList.remove('absent');
+                key.classList.add('present');
+              } else if (results[i] === 'absent' && !key.classList.contains('correct') && !key.classList.contains('present')) {
+                key.classList.add('absent');
+              }
+            }
+          }, i * 100);
+        }
+        
+        // Check win/lose
+        setTimeout(() => {
+          if (word === this.targetWord) {
+            this.won = true;
+            this.gameOver = true;
+            this.showMessage(this.getWinMessage(), 'success');
+            this.updateStats(true);
+            this.newGameBtn.style.display = 'inline-flex';
+          } else if (this.currentRow === 5) {
+            this.gameOver = true;
+            this.showMessage(`The word was: ${this.targetWord}`, 'error');
+            this.updateStats(false);
+            this.newGameBtn.style.display = 'inline-flex';
+          } else {
+            this.currentRow++;
+            this.currentCol = 0;
+          }
+        }, 600);
+      }
+      
+      getWinMessage() {
+        const messages = ['Genius!', 'Magnificent!', 'Impressive!', 'Splendid!', 'Great!', 'Phew!'];
+        return messages[this.currentRow] || 'Well done!';
+      }
+      
+      showMessage(text, type) {
+        this.message.textContent = text;
+        this.message.className = `xnn-wordle__message ${type}`;
+        
+        if (type !== 'success') {
+          setTimeout(() => {
+            this.message.textContent = 'Type your guess and press ENTER';
+            this.message.className = 'xnn-wordle__message info';
+          }, 2000);
+        }
+      }
+      
+      loadStats() {
+        const saved = localStorage.getItem('xnn_wordle_stats');
+        return saved ? JSON.parse(saved) : {
+          played: 0,
+          won: 0,
+          streak: 0,
+          maxStreak: 0
+        };
+      }
+      
+      updateStats(won) {
+        if (won !== undefined) {
+          this.stats.played++;
+          if (won) {
+            this.stats.won++;
+            this.stats.streak++;
+            if (this.stats.streak > this.stats.maxStreak) {
+              this.stats.maxStreak = this.stats.streak;
+            }
+          } else {
+            this.stats.streak = 0;
+          }
+          localStorage.setItem('xnn_wordle_stats', JSON.stringify(this.stats));
+        }
+        
+        document.getElementById('gamesPlayed').textContent = this.stats.played;
+        document.getElementById('winRate').textContent = this.stats.played > 0 
+          ? Math.round((this.stats.won / this.stats.played) * 100) + '%' 
+          : '0%';
+        document.getElementById('currentStreak').textContent = this.stats.streak;
+        document.getElementById('maxStreak').textContent = this.stats.maxStreak;
+      }
+      
+      saveGame() {
+        localStorage.setItem('xnn_wordle_game', JSON.stringify({
+          word: this.targetWord,
+          date: new Date().toDateString(),
+          guesses: this.guesses,
+          gameOver: this.gameOver,
+          won: this.won
+        }));
+      }
+      
+      restoreGame(game) {
+        game.guesses.forEach((guess, i) => {
+          this.currentRow = i;
+          this.currentCol = 0;
+          for (let j = 0; j < 5; j++) {
+            this.addLetter(guess[j]);
+          }
+          this.checkGuess(guess);
+        });
+        
+        if (game.gameOver) {
+          this.gameOver = true;
+          this.won = game.won;
+          this.newGameBtn.style.display = 'inline-flex';
+        }
+      }
+      
+      reset() {
+        this.currentRow = 0;
+        this.currentCol = 0;
+        this.guesses = [];
+        this.gameOver = false;
+        this.won = false;
+        this.targetWord = this.getDailyWord();
+        
+        this.createGrid();
+        this.createKeyboard();
+        this.showMessage('Type your guess and press ENTER', 'info');
+        this.newGameBtn.style.display = 'none';
+        
+        localStorage.removeItem('xnn_wordle_game');
+      }
+      
+      showHint() {
+        if (this.gameOver) return;
+        
+        const unrevealed = [];
+        for (let i = 0; i < 5; i++) {
+          const tile = this.getTile(this.currentRow, i);
+          if (!tile.textContent) {
+            unrevealed.push(i);
+          }
+        }
+        
+        if (unrevealed.length > 0) {
+          const randomIndex = unrevealed[Math.floor(Math.random() * unrevealed.length)];
+          this.showMessage(`Letter ${randomIndex + 1} is "${this.targetWord[randomIndex]}"`, 'info');
+        }
+      }
+      
+      showHowToPlay() {
+        alert(`How to Play:
+
+Guess the 5-letter word in 6 tries.
+
+• Green = Letter is in the correct position
+• Yellow = Letter is in the word but wrong position
+• Gray = Letter is not in the word
+
+A new word is available each day!`);
+      }
+      
+      shareScore() {
+        const emoji = this.won ? '🎉' : '😔';
+        const text = `Xana Word Challenge ${emoji}\n${this.stats.played} games played\n${Math.round((this.stats.won / this.stats.played) * 100)}% win rate\n${this.stats.streak} current streak`;
+        
+        if (navigator.share) {
+          navigator.share({ text });
+        } else {
+          navigator.clipboard.writeText(text);
+          this.showMessage('Score copied to clipboard!', 'success');
+        }
+      }
+    }
+    
+    // Start game
+    new WordleGame();
+  </script>
+</body>
+</html>

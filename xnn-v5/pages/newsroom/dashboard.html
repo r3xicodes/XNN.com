@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Newsroom Dashboard - Xana National News (XNN)</title>
+  
+  <link rel="icon" type="image/svg+xml" href="../../assets/images/favicon.svg">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="../../assets/css/main.css">
+  <link rel="stylesheet" href="../../assets/css/components/buttons.css">
+  
+  <style>
+    .xnn-portal {
+      display: flex;
+      min-height: 100vh;
+      background: var(--xnn-gray-100);
+    }
+    
+    /* Sidebar */
+    .xnn-portal__sidebar {
+      width: 280px;
+      background: var(--xnn-gray-900);
+      color: var(--xnn-white);
+      display: flex;
+      flex-direction: column;
+      position: fixed;
+      height: 100vh;
+      z-index: var(--z-fixed);
+    }
+    
+    .xnn-portal__sidebar-header {
+      padding: var(--space-6);
+      border-bottom: 1px solid var(--xnn-gray-800);
+    }
+    
+    .xnn-portal__logo {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+    }
+    
+    .xnn-portal__logo-icon {
+      width: 40px;
+      height: 40px;
+      background: var(--xnn-accent);
+      border-radius: var(--radius-lg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-weight: var(--font-bold);
+    }
+    
+    .xnn-portal__logo-text {
+      font-family: var(--font-display);
+      font-weight: var(--font-bold);
+    }
+    
+    .xnn-portal__logo-subtitle {
+      font-size: var(--text-xs);
+      color: var(--xnn-gray-400);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+    
+    .xnn-portal__nav {
+      flex: 1;
+      padding: var(--space-4);
+      overflow-y: auto;
+    }
+    
+    .xnn-portal__nav-section {
+      margin-bottom: var(--space-6);
+    }
+    
+    .xnn-portal__nav-title {
+      font-size: var(--text-xs);
+      font-weight: var(--font-semibold);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--xnn-gray-500);
+      padding: 0 var(--space-4);
+      margin-bottom: var(--space-2);
+    }
+    
+    .xnn-portal__nav-item {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      padding: var(--space-3) var(--space-4);
+      border-radius: var(--radius-lg);
+      color: var(--xnn-gray-300);
+      font-size: var(--text-sm);
+      transition: all var(--transition-fast);
+      cursor: pointer;
+    }
+    
+    .xnn-portal__nav-item:hover,
+    .xnn-portal__nav-item.active {
+      background: var(--xnn-primary);
+      color: var(--xnn-white);
+    }
+    
+    .xnn-portal__nav-item i {
+      width: 20px;
+      text-align: center;
+    }
+    
+    .xnn-portal__nav-badge {
+      margin-left: auto;
+      padding: var(--space-1) var(--space-2);
+      background: var(--xnn-accent);
+      font-size: var(--text-xs);
+      font-weight: var(--font-bold);
+      border-radius: var(--radius-full);
+    }
+    
+    .xnn-portal__sidebar-footer {
+      padding: var(--space-4);
+      border-top: 1px solid var(--xnn-gray-800);
+    }
+    
+    .xnn-portal__user {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      padding: var(--space-3);
+      border-radius: var(--radius-lg);
+      cursor: pointer;
+      transition: background var(--transition-fast);
+    }
+    
+    .xnn-portal__user:hover {
+      background: var(--xnn-gray-800);
+    }
+    
+    .xnn-portal__user-avatar {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, var(--xnn-primary) 0%, var(--xnn-primary-light) 100%);
+      border-radius: var(--radius-full);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: var(--font-semibold);
+    }
+    
+    .xnn-portal__user-info {
+      flex: 1;
+    }
+    
+    .xnn-portal__user-name {
+      font-size: var(--text-sm);
+      font-weight: var(--font-semibold);
+    }
+    
+    .xnn-portal__user-role {
+      font-size: var(--text-xs);
+      color: var(--xnn-gray-400);
+    }
+    
+    /* Main Content */
+    .xnn-portal__main {
+      flex: 1;
+      margin-left: 280px;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .xnn-portal__header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: var(--space-4) var(--space-6);
+      background: var(--xnn-white);
+      border-bottom: 1px solid var(--xnn-gray-200);
+      position: sticky;
+      top: 0;
+      z-index: var(--z-sticky);
+    }
+    
+    .xnn-portal__header-title {
+      font-family: var(--font-heading);
+      font-size: var(--text-2xl);
+      font-weight: var(--font-bold);
+      color: var(--xnn-gray-900);
+    }
+    
+    .xnn-portal__header-actions {
+      display: flex;
+      gap: var(--space-3);
+    }
+    
+    .xnn-portal__content {
+      flex: 1;
+      padding: var(--space-6);
+      overflow-y: auto;
+    }
+    
+    /* Stats Grid */
+    .xnn-stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-6);
+      margin-bottom: var(--space-8);
+    }
+    
+    .xnn-stat-card {
+      background: var(--xnn-white);
+      padding: var(--space-6);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-sm);
+    }
+    
+    .xnn-stat-card__header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: var(--space-4);
+    }
+    
+    .xnn-stat-card__icon {
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--xnn-gray-100);
+      color: var(--xnn-primary);
+      border-radius: var(--radius-lg);
+      font-size: var(--text-xl);
+    }
+    
+    .xnn-stat-card__trend {
+      display: flex;
+      align-items: center;
+      gap: var(--space-1);
+      font-size: var(--text-sm);
+      font-weight: var(--font-semibold);
+    }
+    
+    .xnn-stat-card__trend--up {
+      color: var(--xnn-success);
+    }
+    
+    .xnn-stat-card__trend--down {
+      color: var(--xnn-error);
+    }
+    
+    .xnn-stat-card__value {
+      font-family: var(--font-display);
+      font-size: var(--text-3xl);
+      font-weight: var(--font-bold);
+      color: var(--xnn-gray-900);
+    }
+    
+    .xnn-stat-card__label {
+      font-size: var(--text-sm);
+      color: var(--xnn-gray-500);
+      margin-top: var(--space-1);
+    }
+    
+    /* Content Grid */
+    .xnn-portal__grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: var(--space-6);
+    }
+    
+    .xnn-panel {
+      background: var(--xnn-white);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-sm);
+      overflow: hidden;
+    }
+    
+    .xnn-panel__header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: var(--space-4) var(--space-6);
+      border-bottom: 1px solid var(--xnn-gray-100);
+    }
+    
+    .xnn-panel__title {
+      font-family: var(--font-heading);
+      font-size: var(--text-lg);
+      font-weight: var(--font-bold);
+      color: var(--xnn-gray-900);
+    }
+    
+    .xnn-panel__action {
+      font-size: var(--text-sm);
+      color: var(--xnn-primary);
+      font-weight: var(--font-semibold);
+    }
+    
+    .xnn-panel__action:hover {
+      text-decoration: underline;
+    }
+    
+    .xnn-panel__body {
+      padding: var(--space-4);
+    }
+    
+    /* Editorial Queue */
+    .xnn-queue-item {
+      display: flex;
+      align-items: center;
+      gap: var(--space-4);
+      padding: var(--space-4);
+      border-radius: var(--radius-lg);
+      transition: background var(--transition-fast);
+    }
+    
+    .xnn-queue-item:hover {
+      background: var(--xnn-gray-50);
+    }
+    
+    .xnn-queue-item__status {
+      width: 12px;
+      height: 12px;
+      border-radius: var(--radius-full);
+      flex-shrink: 0;
+    }
+    
+    .xnn-queue-item__status--pending { background: var(--xnn-warning); }
+    .xnn-queue-item__status--review { background: var(--xnn-info); }
+    .xnn-queue-item__status--approved { background: var(--xnn-success); }
+    .xnn-queue-item__status--urgent { background: var(--xnn-accent); animation: pulse 1s infinite; }
+    
+    .xnn-queue-item__content {
+      flex: 1;
+    }
+    
+    .xnn-queue-item__title {
+      font-weight: var(--font-semibold);
+      color: var(--xnn-gray-900);
+      margin-bottom: var(--space-1);
+    }
+    
+    .xnn-queue-item__meta {
+      font-size: var(--text-xs);
+      color: var(--xnn-gray-500);
+    }
+    
+    .xnn-queue-item__actions {
+      display: flex;
+      gap: var(--space-2);
+    }
+    
+    .xnn-queue-item__btn {
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: var(--radius-md);
+      color: var(--xnn-gray-400);
+      transition: all var(--transition-fast);
+    }
+    
+    .xnn-queue-item__btn:hover {
+      background: var(--xnn-gray-100);
+      color: var(--xnn-primary);
+    }
+    
+    /* Activity Feed */
+    .xnn-activity-item {
+      display: flex;
+      gap: var(--space-3);
+      padding: var(--space-3) 0;
+      border-bottom: 1px solid var(--xnn-gray-100);
+    }
+    
+    .xnn-activity-item:last-child {
+      border-bottom: none;
+    }
+    
+    .xnn-activity-item__avatar {
+      width: 36px;
+      height: 36px;
+      background: var(--xnn-primary);
+      border-radius: var(--radius-full);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: var(--text-sm);
+      font-weight: var(--font-semibold);
+      color: var(--xnn-white);
+      flex-shrink: 0;
+    }
+    
+    .xnn-activity-item__content {
+      flex: 1;
+    }
+    
+    .xnn-activity-item__text {
+      font-size: var(--text-sm);
+      color: var(--xnn-gray-700);
+      line-height: var(--leading-snug);
+    }
+    
+    .xnn-activity-item__text strong {
+      color: var(--xnn-gray-900);
+    }
+    
+    .xnn-activity-item__time {
+      font-size: var(--text-xs);
+      color: var(--xnn-gray-400);
+      margin-top: var(--space-1);
+    }
+    
+    @media (max-width: 1200px) {
+      .xnn-stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      .xnn-portal__grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .xnn-portal__sidebar {
+        transform: translateX(-100%);
+        transition: transform var(--transition-slow);
+      }
+      
+      .xnn-portal__sidebar.active {
+        transform: translateX(0);
+      }
+      
+      .xnn-portal__main {
+        margin-left: 0;
+      }
+      
+      .xnn-stats-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="xnn-portal">
+    <!-- Sidebar -->
+    <aside class="xnn-portal__sidebar">
+      <div class="xnn-portal__sidebar-header">
+        <a href="../../index.html" class="xnn-portal__logo">
+          <div class="xnn-portal__logo-icon">X</div>
+          <div>
+            <div class="xnn-portal__logo-text">XNN</div>
+            <div class="xnn-portal__logo-subtitle">Newsroom Portal</div>
+          </div>
+        </a>
+      </div>
+      
+      <nav class="xnn-portal__nav">
+        <div class="xnn-portal__nav-section">
+          <p class="xnn-portal__nav-title">Main</p>
+          <a href="dashboard.html" class="xnn-portal__nav-item active">
+            <i class="fas fa-chart-line"></i>
+            Dashboard
+          </a>
+          <a href="editorial-queue.html" class="xnn-portal__nav-item">
+            <i class="fas fa-list"></i>
+            Editorial Queue
+            <span class="xnn-portal__nav-badge">12</span>
+          </a>
+          <a href="my-articles.html" class="xnn-portal__nav-item">
+            <i class="fas fa-file-alt"></i>
+            My Articles
+          </a>
+          <a href="drafts.html" class="xnn-portal__nav-item">
+            <i class="fas fa-edit"></i>
+            Drafts
+          </a>
+        </div>
+        
+        <div class="xnn-portal__nav-section">
+          <p class="xnn-portal__nav-title">Management</p>
+          <a href="staff.html" class="xnn-portal__nav-item">
+            <i class="fas fa-users"></i>
+            Staff Management
+          </a>
+          <a href="analytics.html" class="xnn-portal__nav-item">
+            <i class="fas fa-chart-bar"></i>
+            Analytics
+          </a>
+          <a href="schedule.html" class="xnn-portal__nav-item">
+            <i class="fas fa-calendar"></i>
+            Publishing Schedule
+          </a>
+        </div>
+        
+        <div class="xnn-portal__nav-section">
+          <p class="xnn-portal__nav-title">System</p>
+          <a href="../studio/control-room.html" class="xnn-portal__nav-item">
+            <i class="fas fa-video"></i>
+            Broadcast Studio
+          </a>
+          <a href="../intelligence/command-center.html" class="xnn-portal__nav-item">
+            <i class="fas fa-satellite-dish"></i>
+            Intelligence
+          </a>
+          <a href="../admin/dashboard.html" class="xnn-portal__nav-item">
+            <i class="fas fa-cog"></i>
+            Admin Panel
+          </a>
+        </div>
+      </nav>
+      
+      <div class="xnn-portal__sidebar-footer">
+        <div class="xnn-portal__user" id="userMenu">
+          <div class="xnn-portal__user-avatar">E</div>
+          <div class="xnn-portal__user-info">
+            <div class="xnn-portal__user-name">Elaria Xana</div>
+            <div class="xnn-portal__user-role">Super Administrator</div>
+          </div>
+          <i class="fas fa-chevron-right" style="font-size: 12px; color: var(--xnn-gray-500);"></i>
+        </div>
+      </div>
+    </aside>
+    
+    <!-- Main Content -->
+    <main class="xnn-portal__main">
+      <header class="xnn-portal__header">
+        <h1 class="xnn-portal__header-title">Dashboard</h1>
+        <div class="xnn-portal__header-actions">
+          <a href="new-article.html" class="xnn-btn xnn-btn--primary">
+            <i class="fas fa-plus"></i>
+            New Article
+          </a>
+        </div>
+      </header>
+      
+      <div class="xnn-portal__content">
+        <!-- Stats Grid -->
+        <div class="xnn-stats-grid">
+          <div class="xnn-stat-card">
+            <div class="xnn-stat-card__header">
+              <div class="xnn-stat-card__icon">
+                <i class="fas fa-eye"></i>
+              </div>
+              <span class="xnn-stat-card__trend xnn-stat-card__trend--up">
+                <i class="fas fa-arrow-up"></i> 12.5%
+              </span>
+            </div>
+            <div class="xnn-stat-card__value">2.4M</div>
+            <div class="xnn-stat-card__label">Total Views (24h)</div>
+          </div>
+          
+          <div class="xnn-stat-card">
+            <div class="xnn-stat-card__header">
+              <div class="xnn-stat-card__icon" style="color: var(--xnn-accent);">
+                <i class="fas fa-file-alt"></i>
+              </div>
+              <span class="xnn-stat-card__trend xnn-stat-card__trend--up">
+                <i class="fas fa-arrow-up"></i> 8.3%
+              </span>
+            </div>
+            <div class="xnn-stat-card__value">147</div>
+            <div class="xnn-stat-card__label">Articles Published</div>
+          </div>
+          
+          <div class="xnn-stat-card">
+            <div class="xnn-stat-card__header">
+              <div class="xnn-stat-card__icon" style="color: var(--xnn-success);">
+                <i class="fas fa-check-circle"></i>
+              </div>
+              <span class="xnn-stat-card__trend xnn-stat-card__trend--down">
+                <i class="fas fa-arrow-down"></i> 3.2%
+              </span>
+            </div>
+            <div class="xnn-stat-card__value">89%</div>
+            <div class="xnn-stat-card__label">Approval Rate</div>
+          </div>
+          
+          <div class="xnn-stat-card">
+            <div class="xnn-stat-card__header">
+              <div class="xnn-stat-card__icon" style="color: var(--xnn-warning);">
+                <i class="fas fa-clock"></i>
+              </div>
+              <span class="xnn-stat-card__trend xnn-stat-card__trend--up">
+                <i class="fas fa-arrow-up"></i> 5.1%
+              </span>
+            </div>
+            <div class="xnn-stat-card__value">12</div>
+            <div class="xnn-stat-card__label">Pending Review</div>
+          </div>
+        </div>
+        
+        <!-- Content Grid -->
+        <div class="xnn-portal__grid">
+          <!-- Editorial Queue -->
+          <div class="xnn-panel">
+            <div class="xnn-panel__header">
+              <h2 class="xnn-panel__title">Editorial Queue</h2>
+              <a href="editorial-queue.html" class="xnn-panel__action">View All</a>
+            </div>
+            <div class="xnn-panel__body">
+              <div class="xnn-queue-item">
+                <span class="xnn-queue-item__status xnn-queue-item__status--urgent"></span>
+                <div class="xnn-queue-item__content">
+                  <div class="xnn-queue-item__title">Breaking: Major Earthquake Strikes Coastal Region</div>
+                  <div class="xnn-queue-item__meta">Submitted by Marcus Chen • 5 minutes ago</div>
+                </div>
+                <div class="xnn-queue-item__actions">
+                  <button class="xnn-queue-item__btn" title="Review"><i class="fas fa-eye"></i></button>
+                  <button class="xnn-queue-item__btn" title="Approve"><i class="fas fa-check"></i></button>
+                </div>
+              </div>
+              
+              <div class="xnn-queue-item">
+                <span class="xnn-queue-item__status xnn-queue-item__status--review"></span>
+                <div class="xnn-queue-item__content">
+                  <div class="xnn-queue-item__title">Economic Summit: Day 2 Recap</div>
+                  <div class="xnn-queue-item__meta">Submitted by Sarah Williams • 1 hour ago</div>
+                </div>
+                <div class="xnn-queue-item__actions">
+                  <button class="xnn-queue-item__btn" title="Review"><i class="fas fa-eye"></i></button>
+                  <button class="xnn-queue-item__btn" title="Approve"><i class="fas fa-check"></i></button>
+                </div>
+              </div>
+              
+              <div class="xnn-queue-item">
+                <span class="xnn-queue-item__status xnn-queue-item__status--pending"></span>
+                <div class="xnn-queue-item__content">
+                  <div class="xnn-queue-item__title">Tech Review: New Smartphone Lineup</div>
+                  <div class="xnn-queue-item__meta">Submitted by David Park • 3 hours ago</div>
+                </div>
+                <div class="xnn-queue-item__actions">
+                  <button class="xnn-queue-item__btn" title="Review"><i class="fas fa-eye"></i></button>
+                  <button class="xnn-queue-item__btn" title="Approve"><i class="fas fa-check"></i></button>
+                </div>
+              </div>
+              
+              <div class="xnn-queue-item">
+                <span class="xnn-queue-item__status xnn-queue-item__status--pending"></span>
+                <div class="xnn-queue-item__content">
+                  <div class="xnn-queue-item__title">Sports: Championship Finals Preview</div>
+                  <div class="xnn-queue-item__meta">Submitted by Michael Torres • 4 hours ago</div>
+                </div>
+                <div class="xnn-queue-item__actions">
+                  <button class="xnn-queue-item__btn" title="Review"><i class="fas fa-eye"></i></button>
+                  <button class="xnn-queue-item__btn" title="Approve"><i class="fas fa-check"></i></button>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Activity Feed -->
+          <div class="xnn-panel">
+            <div class="xnn-panel__header">
+              <h2 class="xnn-panel__title">Recent Activity</h2>
+              <a href="activity.html" class="xnn-panel__action">View All</a>
+            </div>
+            <div class="xnn-panel__body">
+              <div class="xnn-activity-item">
+                <div class="xnn-activity-item__avatar">SW</div>
+                <div class="xnn-activity-item__content">
+                  <p class="xnn-activity-item__text"><strong>Sarah Williams</strong> approved "Climate Report 2026"</p>
+                  <span class="xnn-activity-item__time">5 minutes ago</span>
+                </div>
+              </div>
+              
+              <div class="xnn-activity-item">
+                <div class="xnn-activity-item__avatar">MC</div>
+                <div class="xnn-activity-item__content">
+                  <p class="xnn-activity-item__text"><strong>Marcus Chen</strong> submitted article for review</p>
+                  <span class="xnn-activity-item__time">15 minutes ago</span>
+                </div>
+              </div>
+              
+              <div class="xnn-activity-item">
+                <div class="xnn-activity-item__avatar">DP</div>
+                <div class="xnn-activity-item__content">
+                  <p class="xnn-activity-item__text"><strong>David Park</strong> published "Tech Innovation Awards"</p>
+                  <span class="xnn-activity-item__time">1 hour ago</span>
+                </div>
+              </div>
+              
+              <div class="xnn-activity-item">
+                <div class="xnn-activity-item__avatar">EX</div>
+                <div class="xnn-activity-item__content">
+                  <p class="xnn-activity-item__text"><strong>System</strong> auto-published scheduled article</p>
+                  <span class="xnn-activity-item__time">2 hours ago</span>
+                </div>
+              </div>
+              
+              <div class="xnn-activity-item">
+                <div class="xnn-activity-item__avatar">LW</div>
+                <div class="xnn-activity-item__content">
+                  <p class="xnn-activity-item__text"><strong>Lisa Wong</strong> requested editorial changes</p>
+                  <span class="xnn-activity-item__time">3 hours ago</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+  
+  <script type="module">
+    import { AuthManager } from '../../assets/js/modules/auth.js';
+    
+    const auth = new AuthManager();
+    
+    // Check authentication
+    if (!auth.isAuthenticated()) {
+      window.location.href = '../account/login.html';
+    }
+    
+    // Check required clearance
+    if (!auth.hasClearance(2)) {
+      window.location.href = '../error/403.html';
+    }
+    
+    // Update user info
+    const user = auth.getCurrentUser();
+    if (user) {
+      const avatar = document.querySelector('.xnn-portal__user-avatar');
+      const name = document.querySelector('.xnn-portal__user-name');
+      const role = document.querySelector('.xnn-portal__user-role');
+      
+      if (avatar) avatar.textContent = user.firstName[0];
+      if (name) name.textContent = `${user.firstName} ${user.lastName}`;
+      if (role) role.textContent = USER_ROLES[user.role]?.name || user.role;
+    }
+    
+    // Logout handler
+    document.getElementById('userMenu')?.addEventListener('click', () => {
+      if (confirm('Logout from Newsroom Portal?')) {
+        auth.logout();
+        window.location.href = '../../index.html';
+      }
+    });
+  </script>
+</body>
+</html>

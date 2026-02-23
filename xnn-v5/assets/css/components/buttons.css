@@ -1,0 +1,307 @@
+/* ============================================
+   XNN BUTTONS
+   ============================================ */
+
+.xnn-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-6);
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: var(--font-semibold);
+  line-height: var(--leading-none);
+  text-align: center;
+  white-space: nowrap;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  border: 2px solid transparent;
+}
+
+.xnn-btn:disabled,
+.xnn-btn--disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Button Variants */
+.xnn-btn--primary {
+  background: var(--xnn-primary);
+  color: var(--xnn-white);
+  border-color: var(--xnn-primary);
+}
+
+.xnn-btn--primary:hover:not(:disabled) {
+  background: var(--xnn-primary-dark);
+  border-color: var(--xnn-primary-dark);
+}
+
+.xnn-btn--secondary {
+  background: var(--xnn-gray-100);
+  color: var(--xnn-gray-700);
+  border-color: var(--xnn-gray-200);
+}
+
+.xnn-btn--secondary:hover:not(:disabled) {
+  background: var(--xnn-gray-200);
+  border-color: var(--xnn-gray-300);
+}
+
+.xnn-btn--accent {
+  background: var(--xnn-accent);
+  color: var(--xnn-white);
+  border-color: var(--xnn-accent);
+}
+
+.xnn-btn--accent:hover:not(:disabled) {
+  background: var(--xnn-accent-dark);
+  border-color: var(--xnn-accent-dark);
+}
+
+.xnn-btn--outline {
+  background: transparent;
+  color: var(--xnn-primary);
+  border-color: var(--xnn-primary);
+}
+
+.xnn-btn--outline:hover:not(:disabled) {
+  background: var(--xnn-primary);
+  color: var(--xnn-white);
+}
+
+.xnn-btn--ghost {
+  background: transparent;
+  color: var(--xnn-gray-600);
+  border-color: transparent;
+}
+
+.xnn-btn--ghost:hover:not(:disabled) {
+  background: var(--xnn-gray-100);
+  color: var(--xnn-gray-800);
+}
+
+.xnn-btn--danger {
+  background: var(--xnn-error);
+  color: var(--xnn-white);
+  border-color: var(--xnn-error);
+}
+
+.xnn-btn--danger:hover:not(:disabled) {
+  background: var(--xnn-error-light);
+  border-color: var(--xnn-error-light);
+}
+
+.xnn-btn--success {
+  background: var(--xnn-success);
+  color: var(--xnn-white);
+  border-color: var(--xnn-success);
+}
+
+.xnn-btn--success:hover:not(:disabled) {
+  background: var(--xnn-success-light);
+  border-color: var(--xnn-success-light);
+}
+
+.xnn-btn--gold {
+  background: var(--xnn-gold);
+  color: var(--xnn-gray-900);
+  border-color: var(--xnn-gold);
+}
+
+.xnn-btn--gold:hover:not(:disabled) {
+  background: var(--xnn-gold-light);
+  border-color: var(--xnn-gold-light);
+}
+
+/* Button Sizes */
+.xnn-btn--xs {
+  padding: var(--space-1) var(--space-2);
+  font-size: var(--text-xs);
+}
+
+.xnn-btn--sm {
+  padding: var(--space-2) var(--space-4);
+  font-size: var(--text-xs);
+}
+
+.xnn-btn--lg {
+  padding: var(--space-4) var(--space-8);
+  font-size: var(--text-base);
+}
+
+.xnn-btn--xl {
+  padding: var(--space-5) var(--space-10);
+  font-size: var(--text-lg);
+}
+
+/* Button Shapes */
+.xnn-btn--rounded {
+  border-radius: var(--radius-full);
+}
+
+.xnn-btn--square {
+  border-radius: var(--radius-none);
+}
+
+/* Button with Icon */
+.xnn-btn--icon {
+  padding: var(--space-3);
+}
+
+.xnn-btn--icon-left {
+  padding-left: var(--space-4);
+}
+
+.xnn-btn--icon-right {
+  padding-right: var(--space-4);
+}
+
+.xnn-btn__icon {
+  font-size: 1.1em;
+}
+
+/* Loading State */
+.xnn-btn--loading {
+  position: relative;
+  color: transparent !important;
+}
+
+.xnn-btn--loading::after {
+  content: '';
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border: 2px solid currentColor;
+  border-right-color: transparent;
+  border-radius: var(--radius-full);
+  animation: spin 0.75s linear infinite;
+}
+
+/* Clearance Level Buttons */
+.xnn-btn--clearance-public {
+  background: var(--clearance-public);
+  color: var(--xnn-white);
+  border-color: var(--clearance-public);
+}
+
+.xnn-btn--clearance-internal {
+  background: var(--clearance-internal);
+  color: var(--xnn-white);
+  border-color: var(--clearance-internal);
+}
+
+.xnn-btn--clearance-restricted {
+  background: var(--clearance-restricted);
+  color: var(--xnn-gray-900);
+  border-color: var(--clearance-restricted);
+}
+
+.xnn-btn--clearance-confidential {
+  background: var(--clearance-confidential);
+  color: var(--xnn-white);
+  border-color: var(--clearance-confidential);
+}
+
+.xnn-btn--clearance-secret {
+  background: var(--clearance-secret);
+  color: var(--xnn-white);
+  border-color: var(--clearance-secret);
+}
+
+.xnn-btn--clearance-top-secret {
+  background: var(--clearance-top-secret);
+  color: var(--xnn-white);
+  border-color: var(--clearance-top-secret);
+}
+
+/* Threat Level Buttons */
+.xnn-btn--threat-low { background: var(--threat-low); color: var(--xnn-white); }
+.xnn-btn--threat-guarded { background: var(--threat-guarded); color: var(--xnn-white); }
+.xnn-btn--threat-elevated { background: var(--threat-elevated); color: var(--xnn-gray-900); }
+.xnn-btn--threat-high { background: var(--threat-high); color: var(--xnn-white); }
+.xnn-btn--threat-severe { background: var(--threat-severe); color: var(--xnn-white); }
+.xnn-btn--threat-critical { background: var(--threat-critical); color: var(--xnn-white); }
+
+/* Button Group */
+.xnn-btn-group {
+  display: inline-flex;
+  gap: var(--space-1);
+}
+
+.xnn-btn-group .xnn-btn {
+  border-radius: 0;
+}
+
+.xnn-btn-group .xnn-btn:first-child {
+  border-radius: var(--radius-md) 0 0 var(--radius-md);
+}
+
+.xnn-btn-group .xnn-btn:last-child {
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+}
+
+.xnn-btn-group--rounded .xnn-btn:first-child {
+  border-radius: var(--radius-full) 0 0 var(--radius-full);
+}
+
+.xnn-btn-group--rounded .xnn-btn:last-child {
+  border-radius: 0 var(--radius-full) var(--radius-full) 0;
+}
+
+/* Floating Action Button */
+.xnn-fab {
+  position: fixed;
+  bottom: var(--space-6);
+  right: var(--space-6);
+  width: 56px;
+  height: 56px;
+  background: var(--xnn-accent);
+  color: var(--xnn-white);
+  border-radius: var(--radius-full);
+  box-shadow: var(--shadow-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--text-xl);
+  transition: all var(--transition-base);
+  z-index: var(--z-fixed);
+}
+
+.xnn-fab:hover {
+  background: var(--xnn-accent-dark);
+  box-shadow: var(--shadow-xl);
+  transform: translateY(-2px);
+}
+
+/* Back to Top Button */
+.xnn-back-to-top {
+  position: fixed;
+  bottom: var(--space-6);
+  right: var(--space-6);
+  width: 48px;
+  height: 48px;
+  background: var(--xnn-primary);
+  color: var(--xnn-white);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+  transition: all var(--transition-base);
+  z-index: var(--z-fixed);
+}
+
+.xnn-back-to-top.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.xnn-back-to-top:hover {
+  background: var(--xnn-primary-light);
+}

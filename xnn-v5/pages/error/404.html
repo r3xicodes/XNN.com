@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 - Page Not Found | Xana National News (XNN)</title>
+  
+  <link rel="icon" type="image/svg+xml" href="../../assets/images/favicon.svg">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="../../assets/css/main.css">
+  
+  <style>
+    .xnn-error-page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: var(--space-8);
+      background: linear-gradient(135deg, var(--xnn-gray-900) 0%, var(--xnn-primary-dark) 100%);
+      text-align: center;
+      color: var(--xnn-white);
+    }
+    
+    .xnn-error-page__logo {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      margin-bottom: var(--space-12);
+    }
+    
+    .xnn-error-page__logo-icon {
+      width: 56px;
+      height: 56px;
+      background: var(--xnn-white);
+      color: var(--xnn-primary);
+      border-radius: var(--radius-lg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-size: var(--text-3xl);
+      font-weight: var(--font-bold);
+    }
+    
+    .xnn-error-page__logo-text {
+      font-family: var(--font-display);
+      font-size: var(--text-3xl);
+      font-weight: var(--font-bold);
+    }
+    
+    .xnn-error-page__code {
+      font-family: var(--font-display);
+      font-size: clamp(120px, 20vw, 200px);
+      font-weight: var(--font-black);
+      line-height: 1;
+      background: linear-gradient(135deg, var(--xnn-accent) 0%, var(--xnn-gold) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: var(--space-4);
+    }
+    
+    .xnn-error-page__title {
+      font-family: var(--font-heading);
+      font-size: var(--text-4xl);
+      font-weight: var(--font-bold);
+      margin-bottom: var(--space-4);
+    }
+    
+    .xnn-error-page__message {
+      font-size: var(--text-xl);
+      color: var(--xnn-gray-300);
+      max-width: 500px;
+      margin-bottom: var(--space-8);
+      line-height: var(--leading-relaxed);
+    }
+    
+    .xnn-error-page__actions {
+      display: flex;
+      gap: var(--space-4);
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    
+    .xnn-error-page__search {
+      width: 100%;
+      max-width: 400px;
+      margin-top: var(--space-8);
+    }
+    
+    .xnn-error-page__search-input {
+      width: 100%;
+      padding: var(--space-4) var(--space-6);
+      font-size: var(--text-base);
+      background: rgba(255, 255, 255, 0.1);
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      border-radius: var(--radius-lg);
+      color: var(--xnn-white);
+      outline: none;
+      transition: all var(--transition-fast);
+    }
+    
+    .xnn-error-page__search-input:focus {
+      border-color: var(--xnn-accent);
+      background: rgba(255, 255, 255, 0.15);
+    }
+    
+    .xnn-error-page__search-input::placeholder {
+      color: var(--xnn-gray-400);
+    }
+    
+    .xnn-error-page__links {
+      margin-top: var(--space-12);
+      padding-top: var(--space-8);
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .xnn-error-page__links-title {
+      font-size: var(--text-sm);
+      font-weight: var(--font-semibold);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--xnn-gray-400);
+      margin-bottom: var(--space-4);
+    }
+    
+    .xnn-error-page__links-list {
+      display: flex;
+      gap: var(--space-6);
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    
+    .xnn-error-page__links-list a {
+      font-size: var(--text-sm);
+      color: var(--xnn-gray-300);
+      transition: color var(--transition-fast);
+    }
+    
+    .xnn-error-page__links-list a:hover {
+      color: var(--xnn-white);
+    }
+    
+    @media (max-width: 640px) {
+      .xnn-error-page__title {
+        font-size: var(--text-2xl);
+      }
+      
+      .xnn-error-page__message {
+        font-size: var(--text-lg);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="xnn-error-page">
+    <a href="../../index.html" class="xnn-error-page__logo">
+      <div class="xnn-error-page__logo-icon">X</div>
+      <span class="xnn-error-page__logo-text">XNN</span>
+    </a>
+    
+    <div class="xnn-error-page__code">404</div>
+    <h1 class="xnn-error-page__title">Page Not Found</h1>
+    <p class="xnn-error-page__message">
+      The page you're looking for doesn't exist or has been moved. 
+      Please check the URL or try searching for what you need.
+    </p>
+    
+    <div class="xnn-error-page__actions">
+      <a href="../../index.html" class="xnn-btn xnn-btn--primary xnn-btn--lg">
+        <i class="fas fa-home"></i>
+        Back to Homepage
+      </a>
+      <a href="../contact.html" class="xnn-btn xnn-btn--outline xnn-btn--lg" style="border-color: rgba(255,255,255,0.3); color: white;">
+        <i class="fas fa-envelope"></i>
+        Contact Support
+      </a>
+    </div>
+    
+    <div class="xnn-error-page__search">
+      <input type="text" class="xnn-error-page__search-input" placeholder="Search XNN..." id="searchInput">
+    </div>
+    
+    <div class="xnn-error-page__links">
+      <p class="xnn-error-page__links-title">Popular Destinations</p>
+      <div class="xnn-error-page__links-list">
+        <a href="../world.html">World News</a>
+        <a href="../politics.html">Politics</a>
+        <a href="../business.html">Business</a>
+        <a href="../sports.html">Sports</a>
+        <a href="../technology.html">Technology</a>
+      </div>
+    </div>
+  </div>
+  
+  <script>
+    document.getElementById('searchInput')?.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') {
+        window.location.href = `../search.html?q=${encodeURIComponent(e.target.value)}`;
+      }
+    });
+  </script>
+</body>
+</html>

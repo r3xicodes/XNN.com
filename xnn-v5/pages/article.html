@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Read the full article on Xana National News (XNN) - Your trusted source for breaking news and in-depth analysis.">
+  <title>Article - Xana National News (XNN)</title>
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="../assets/css/main.css">
+  <link rel="stylesheet" href="../assets/css/components/header.css">
+  <link rel="stylesheet" href="../assets/css/components/buttons.css">
+  <link rel="stylesheet" href="../assets/css/components/cards.css">
+  <link rel="stylesheet" href="../assets/css/components/ticker.css">
+  <link rel="stylesheet" href="../assets/css/layouts/footer.css">
+  
+  <!-- Article-specific styles -->
+  <style>
+    .xnn-article {
+      padding-top: calc(var(--header-height) + var(--ticker-height));
+    }
+    
+    .xnn-article__header {
+      background: var(--xnn-gray-900);
+      color: var(--xnn-white);
+      padding: var(--space-12) 0;
+    }
+    
+    .xnn-article__meta {
+      display: flex;
+      align-items: center;
+      gap: var(--space-4);
+      margin-bottom: var(--space-4);
+      flex-wrap: wrap;
+    }
+    
+    .xnn-article__category {
+      padding: var(--space-1) var(--space-3);
+      background: var(--xnn-accent);
+      font-size: var(--text-xs);
+      font-weight: var(--font-semibold);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      border-radius: var(--radius-sm);
+    }
+    
+    .xnn-article__badge {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      padding: var(--space-1) var(--space-3);
+      background: var(--xnn-gold);
+      color: var(--xnn-gray-900);
+      font-size: var(--text-xs);
+      font-weight: var(--font-semibold);
+      text-transform: uppercase;
+      border-radius: var(--radius-sm);
+    }
+    
+    .xnn-article__badge i {
+      animation: pulse 1s infinite;
+    }
+    
+    .xnn-article__title {
+      font-family: var(--font-heading);
+      font-size: var(--text-5xl);
+      font-weight: var(--font-bold);
+      line-height: var(--leading-tight);
+      margin-bottom: var(--space-4);
+    }
+    
+    .xnn-article__subtitle {
+      font-size: var(--text-xl);
+      color: var(--xnn-gray-300);
+      line-height: var(--leading-relaxed);
+      max-width: 800px;
+    }
+    
+    .xnn-article__author-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: var(--space-4) 0;
+      border-top: 1px solid var(--xnn-gray-700);
+      margin-top: var(--space-8);
+      flex-wrap: wrap;
+      gap: var(--space-4);
+    }
+    
+    .xnn-article__author {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+    }
+    
+    .xnn-article__author-avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: var(--radius-full);
+      object-fit: cover;
+    }
+    
+    .xnn-article__author-info {
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .xnn-article__author-name {
+      font-weight: var(--font-semibold);
+      color: var(--xnn-white);
+    }
+    
+    .xnn-article__author-name:hover {
+      text-decoration: underline;
+    }
+    
+    .xnn-article__author-title {
+      font-size: var(--text-sm);
+      color: var(--xnn-gray-400);
+    }
+    
+    .xnn-article__date {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+    }
+    
+    .xnn-article__published {
+      font-size: var(--text-sm);
+      color: var(--xnn-gray-400);
+    }
+    
+    .xnn-article__updated {
+      font-size: var(--text-xs);
+      color: var(--xnn-gray-500);
+    }
+    
+    .xnn-article__actions {
+      display: flex;
+      gap: var(--space-2);
+    }
+    
+    .xnn-article__action-btn {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--xnn-gray-800);
+      color: var(--xnn-gray-300);
+      border-radius: var(--radius-md);
+      transition: all var(--transition-fast);
+    }
+    
+    .xnn-article__action-btn:hover {
+      background: var(--xnn-primary);
+      color: var(--xnn-white);
+    }
+    
+    .xnn-article__hero-image {
+      width: 100%;
+      max-height: 600px;
+      object-fit: cover;
+    }
+    
+    .xnn-article__caption {
+      padding: var(--space-4);
+      background: var(--xnn-gray-100);
+      font-size: var(--text-sm);
+      color: var(--xnn-gray-600);
+      text-align: center;
+    }
+    
+    .xnn-article__body {
+      padding: var(--space-12) 0;
+    }
+    
+    .xnn-article__content {
+      max-width: var(--max-reading-width);
+      margin: 0 auto;
+      font-size: var(--text-lg);
+      line-height: var(--leading-relaxed);
+    }
+    
+    .xnn-article__content p {
+      margin-bottom: var(--space-6);
+    }
+    
+    .xnn-article__content h2 {
+      font-family: var(--font-heading);
+      font-size: var(--text-3xl);
+      font-weight: var(--font-bold);
+      color: var(--xnn-gray-900);
+      margin: var(--space-8) 0 var(--space-4);
+    }
+    
+    .xnn-article__content h3 {
+      font-family: var(--font-heading);
+      font-size: var(--text-2xl);
+      font-weight: var(--font-bold);
+      color: var(--xnn-gray-900);
+      margin: var(--space-6) 0 var(--space-3);
+    }
+    
+    .xnn-article__content blockquote {
+      margin: var(--space-8) 0;
+      padding: var(--space-6) var(--space-8);
+      border-left: 4px solid var(--xnn-accent);
+      background: var(--xnn-gray-50);
+      font-family: var(--font-heading);
+      font-size: var(--text-xl);
+      font-style: italic;
+      color: var(--xnn-gray-700);
+    }
+    
+    .xnn-article__content blockquote cite {
+      display: block;
+      margin-top: var(--space-3);
+      font-family: var(--font-body);
+      font-size: var(--text-base);
+      font-style: normal;
+      color: var(--xnn-gray-500);
+    }
+    
+    .xnn-article__content ul,
+    .xnn-article__content ol {
+      margin: var(--space-4) 0 var(--space-6) var(--space-6);
+    }
+    
+    .xnn-article__content ul {
+      list-style: disc;
+    }
+    
+    .xnn-article__content ol {
+      list-style: decimal;
+    }
+    
+    .xnn-article__content li {
+      margin-bottom: var(--space-2);
+    }
+    
+    .xnn-article__tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-2);
+      margin-top: var(--space-8);
+      padding-top: var(--space-6);
+      border-top: 1px solid var(--xnn-gray-200);
+    }
+    
+    .xnn-article__tag {
+      padding: var(--space-2) var(--space-4);
+      background: var(--xnn-gray-100);
+      font-size: var(--text-sm);
+      color: var(--xnn-gray-600);
+      border-radius: var(--radius-full);
+      transition: all var(--transition-fast);
+    }
+    
+    .xnn-article__tag:hover {
+      background: var(--xnn-primary);
+      color: var(--xnn-white);
+    }
+    
+    .xnn-article__share {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      margin-top: var(--space-6);
+    }
+    
+    .xnn-article__share-label {
+      font-size: var(--text-sm);
+      font-weight: var(--font-semibold);
+      color: var(--xnn-gray-600);
+    }
+    
+    .xnn-article__share-buttons {
+      display: flex;
+      gap: var(--space-2);
+    }
+    
+    .xnn-article__share-btn {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: var(--radius-full);
+      color: var(--xnn-white);
+      transition: transform var(--transition-fast);
+    }
+    
+    .xnn-article__share-btn:hover {
+      transform: translateY(-2px);
+    }
+    
+    .xnn-article__share-btn--facebook { background: #1877f2; }
+    .xnn-article__share-btn--twitter { background: #1da1f2; }
+    .xnn-article__share-btn--linkedin { background: #0077b5; }
+    .xnn-article__share-btn--email { background: var(--xnn-gray-600); }
+    
+    .xnn-article__related {
+      background: var(--xnn-gray-50);
+      padding: var(--space-12) 0;
+    }
+    
+    .xnn-article__related-title {
+      font-family: var(--font-heading);
+      font-size: var(--text-2xl);
+      font-weight: var(--font-bold);
+      color: var(--xnn-gray-900);
+      margin-bottom: var(--space-6);
+    }
+    
+    @media (max-width: 768px) {
+      .xnn-article__title {
+        font-size: var(--text-3xl);
+      }
+      
+      .xnn-article__subtitle {
+        font-size: var(--text-lg);
+      }
+      
+      .xnn-article__author-bar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      
+      .xnn-article__date {
+        align-items: flex-start;
+      }
+      
+      .xnn-article__content {
+        font-size: var(--text-base);
+      }
+      
+      .xnn-article__content h2 {
+        font-size: var(--text-2xl);
+      }
+      
+      .xnn-article__content h3 {
+        font-size: var(--text-xl);
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Skip Link -->
+  <a href="#article-content" class="skip-link">Skip to article content</a>
+  
+  <!-- Breaking News Ticker -->
+  <div class="xnn-ticker" id="breakingTicker">
+    <div class="xnn-ticker__label">
+      <i class="fas fa-bolt xnn-ticker__label-icon"></i>
+      <span class="xnn-ticker__label-text">Breaking</span>
+    </div>
+    <div class="xnn-ticker__content">
+      <div class="xnn-ticker__track" id="tickerTrack"></div>
+    </div>
+    <div class="xnn-ticker__actions">
+      <button class="xnn-ticker__btn" id="tickerPause" aria-label="Pause ticker">
+        <i class="fas fa-pause"></i>
+      </button>
+    </div>
+  </div>
+  
+  <!-- Header -->
+  <header class="xnn-header" id="mainHeader">
+    <div class="xnn-header__inner">
+      <a href="../index.html" class="xnn-logo">
+        <div class="xnn-logo__icon">X</div>
+        <div class="xnn-logo__text">
+          <span class="xnn-logo__title">XNN</span>
+          <span class="xnn-logo__subtitle">Xana National News</span>
+        </div>
+      </a>
+      
+      <nav class="xnn-nav" aria-label="Main navigation">
+        <div class="xnn-nav__item">
+          <a href="../index.html" class="xnn-nav__link">Home</a>
+        </div>
+        <div class="xnn-nav__item">
+          <a href="world.html" class="xnn-nav__link">World</a>
+        </div>
+        <div class="xnn-nav__item">
+          <a href="politics.html" class="xnn-nav__link">Politics</a>
+        </div>
+        <div class="xnn-nav__item">
+          <a href="business.html" class="xnn-nav__link">Business</a>
+        </div>
+        <div class="xnn-nav__item">
+          <a href="military.html" class="xnn-nav__link">Military</a>
+        </div>
+      </nav>
+      
+      <div class="xnn-header__actions">
+        <button class="xnn-header__search-btn" id="searchBtn" aria-label="Search">
+          <i class="fas fa-search"></i>
+        </button>
+        <a href="subscribe.html" class="xnn-header__subscribe-btn">Subscribe</a>
+        <button class="xnn-header__menu-btn" id="mobileMenuBtn" aria-label="Open menu">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+  
+  <!-- Article Content -->
+  <article class="xnn-article" id="article-content">
+    <!-- Article Header -->
+    <header class="xnn-article__header">
+      <div class="container">
+        <div class="xnn-article__meta">
+          <span class="xnn-article__category">Politics</span>
+          <span class="xnn-article__badge">
+            <i class="fas fa-circle"></i>
+            Breaking
+          </span>
+        </div>
+        <h1 class="xnn-article__title">President Announces Historic Infrastructure Investment Plan Worth $2 Trillion</h1>
+        <p class="xnn-article__subtitle">In a landmark address to the nation, the President unveiled an ambitious infrastructure plan that promises to transform the nation's transportation, energy, and digital networks over the next decade.</p>
+        
+        <div class="xnn-article__author-bar">
+          <div class="xnn-article__author">
+            <img src="../assets/images/staff/james-mitchell.jpg" alt="James Mitchell" class="xnn-article__author-avatar">
+            <div class="xnn-article__author-info">
+              <a href="author/james-mitchell.html" class="xnn-article__author-name">James Mitchell</a>
+              <span class="xnn-article__author-title">Senior Political Correspondent</span>
+            </div>
+          </div>
+          <div class="xnn-article__date">
+            <span class="xnn-article__published">Published: February 24, 2026</span>
+            <span class="xnn-article__updated">Updated: 2 hours ago</span>
+          </div>
+          <div class="xnn-article__actions">
+            <button class="xnn-article__action-btn" aria-label="Save article">
+              <i class="far fa-bookmark"></i>
+            </button>
+            <button class="xnn-article__action-btn" aria-label="Print article">
+              <i class="fas fa-print"></i>
+            </button>
+            <button class="xnn-article__action-btn" aria-label="Share article">
+              <i class="fas fa-share-alt"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+    
+    <!-- Hero Image -->
+    <figure>
+      <img src="../assets/images/editorial/infrastructure-plan.jpg" alt="President announcing infrastructure plan" class="xnn-article__hero-image">
+      <figcaption class="xnn-article__caption">The President addresses the nation from the Oval Office, outlining the ambitious infrastructure investment plan. (Photo: XNN White House Correspondent)</figcaption>
+    </figure>
+    
+    <!-- Article Body -->
+    <div class="xnn-article__body">
+      <div class="container">
+        <div class="xnn-article__content">
+          <p><strong>WASHINGTON</strong> — In a historic address that marked a defining moment of his presidency, the President unveiled a comprehensive $2 trillion infrastructure investment plan aimed at modernizing the nation's crumbling infrastructure while creating millions of jobs and positioning the country for long-term economic growth.</p>
+          
+          <p>The ambitious proposal, dubbed the "Building for the Future Act," represents the largest infrastructure investment in the nation's history and addresses critical needs across transportation, energy, broadband, and water systems.</p>
+          
+          <h2>A Comprehensive Vision</h2>
+          
+          <p>The plan allocates funding across several key areas:</p>
+          
+          <ul>
+            <li><strong>$650 billion</strong> for transportation infrastructure, including roads, bridges, railways, and public transit systems</li>
+            <li><strong>$400 billion</strong> for clean energy and climate resilience initiatives</li>
+            <li><strong>$300 billion</strong> for expanding broadband access to underserved communities</li>
+            <li><strong>$250 billion</strong> for modernizing water systems and ensuring clean drinking water</li>
+            <li><strong>$200 billion</strong> for affordable housing and community development</li>
+            <li><strong>$200 billion</strong> for modernizing schools and educational facilities</li>
+          </ul>
+          
+          <blockquote>
+            "This is not just about fixing what is broken. This is about building what we need for the future — a future where every community has access to clean water, high-speed internet, reliable transportation, and good-paying jobs."
+            <cite>— The President</cite>
+          </blockquote>
+          
+          <h2>Bipartisan Support Challenges</h2>
+          
+          <p>While the plan has garnered praise from labor unions and many Democratic lawmakers, Republicans have expressed concerns about the price tag and the proposed funding mechanisms, which include raising the corporate tax rate from 21% to 28%.</p>
+          
+          <p>Senate Minority Leader John Roberts called the proposal "a massive tax-and-spend scheme that will burden future generations with debt while hampering economic competitiveness."</p>
+          
+          <p>However, some moderate Republicans have indicated openness to negotiating a scaled-down version of the plan, particularly provisions related to traditional infrastructure like roads and bridges.</p>
+          
+          <h2>Economic Impact Projections</h2>
+          
+          <p>The White House estimates that the plan will create approximately 3 million jobs over the next decade, with a particular focus on union jobs in construction, manufacturing, and engineering.</p>
+          
+          <p>Independent economic analysts have offered mixed assessments. The Peterson Institute projects that the plan could boost GDP growth by 1.5% annually over the next five years, while the Heritage Foundation warns that the tax increases could offset much of the economic benefit.</p>
+          
+          <h2>Timeline and Next Steps</h2>
+          
+          <p>The administration aims to pass the legislation through Congress by summer, though the timeline remains uncertain given the slim Democratic majorities in both chambers. The President has indicated willingness to negotiate on specific provisions but has drawn a "red line" on the overall funding level.</p>
+          
+          <p>"We're not going to compromise on the scope of this challenge," the President said. "The American people elected us to think big and act boldly. That's exactly what we're going to do."</p>
+          
+          <p>The plan now moves to congressional committees, where it will face intense scrutiny and likely significant modifications before reaching the President's desk.</p>
+          
+          <!-- Tags -->
+          <div class="xnn-article__tags">
+            <a href="#" class="xnn-article__tag">Infrastructure</a>
+            <a href="#" class="xnn-article__tag">Politics</a>
+            <a href="#" class="xnn-article__tag">Economy</a>
+            <a href="#" class="xnn-article__tag">Jobs</a>
+            <a href="#" class="xnn-article__tag">Transportation</a>
+            <a href="#" class="xnn-article__tag">Climate</a>
+          </div>
+          
+          <!-- Share Buttons -->
+          <div class="xnn-article__share">
+            <span class="xnn-article__share-label">Share this article:</span>
+            <div class="xnn-article__share-buttons">
+              <a href="#" class="xnn-article__share-btn xnn-article__share-btn--facebook" aria-label="Share on Facebook">
+                <i class="fab fa-facebook-f"></i>
+              </a>
+              <a href="#" class="xnn-article__share-btn xnn-article__share-btn--twitter" aria-label="Share on Twitter">
+                <i class="fab fa-twitter"></i>
+              </a>
+              <a href="#" class="xnn-article__share-btn xnn-article__share-btn--linkedin" aria-label="Share on LinkedIn">
+                <i class="fab fa-linkedin-in"></i>
+              </a>
+              <a href="#" class="xnn-article__share-btn xnn-article__share-btn--email" aria-label="Share via email">
+                <i class="fas fa-envelope"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </article>
+  
+  <!-- Related Articles -->
+  <section class="xnn-article__related">
+    <div class="container">
+      <h2 class="xnn-article__related-title">Related Articles</h2>
+      <div class="xnn-card-grid xnn-card-grid--3" id="relatedArticles">
+        <!-- Related articles injected by JS -->
+      </div>
+    </div>
+  </section>
+  
+  <!-- Footer -->
+  <footer class="xnn-footer">
+    <div class="container">
+      <div class="xnn-footer__grid">
+        <div class="xnn-footer__brand">
+          <a href="../index.html" class="xnn-logo">
+            <div class="xnn-logo__icon">X</div>
+            <div class="xnn-logo__text">
+              <span class="xnn-logo__title">XNN</span>
+              <span class="xnn-logo__subtitle">Xana National News</span>
+            </div>
+          </a>
+          <p class="xnn-footer__tagline">Your trusted source for breaking news and in-depth analysis.</p>
+        </div>
+        <div class="xnn-footer__nav">
+          <h3 class="xnn-footer__nav-title">Sections</h3>
+          <ul class="xnn-footer__nav-list">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="world.html">World</a></li>
+            <li><a href="politics.html">Politics</a></li>
+            <li><a href="business.html">Business</a></li>
+          </ul>
+        </div>
+        <div class="xnn-footer__nav">
+          <h3 class="xnn-footer__nav-title">Company</h3>
+          <ul class="xnn-footer__nav-list">
+            <li><a href="corporate/about.html">About Us</a></li>
+            <li><a href="corporate/careers.html">Careers</a></li>
+            <li><a href="corporate/contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+        <div class="xnn-footer__nav">
+          <h3 class="xnn-footer__nav-title">Legal</h3>
+          <ul class="xnn-footer__nav-list">
+            <li><a href="legal/privacy.html">Privacy Policy</a></li>
+            <li><a href="legal/terms.html">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="xnn-footer__bottom">
+        <p class="xnn-footer__copyright">&copy; 2026 Xana National News (XNN). All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+  
+  <!-- JavaScript -->
+  <script type="module">
+    import { TickerManager } from '../assets/js/modules/ticker.js';
+    import { DataStore } from '../assets/js/modules/data.js';
+    
+    // Initialize ticker
+    new TickerManager();
+    
+    // Load related articles
+    const data = new DataStore();
+    const relatedContainer = document.getElementById('relatedArticles');
+    const latestNews = data.getLatestNews().slice(0, 3);
+    
+    relatedContainer.innerHTML = latestNews.map(article => `
+      <article class="xnn-card xnn-card--shadow xnn-card--hover">
+        <div class="xnn-card__image">
+          <img src="${article.image}" alt="${article.title}" loading="lazy">
+        </div>
+        <div class="xnn-card__content">
+          <div class="xnn-card__meta">
+            <span class="xnn-card__category">${article.category}</span>
+            <span class="xnn-card__date">${article.timeAgo}</span>
+          </div>
+          <h3 class="xnn-card__title">
+            <a href="${article.url}">${article.title}</a>
+          </h3>
+        </div>
+      </article>
+    `).join('');
+  </script>
+</body>
+</html>
