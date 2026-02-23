@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="../../assets/css/layouts/footer.css">
 </head>
 <body>
-  <header class="xnn-header">
+  <header class="xnn-header" id="mainHeader">
     <div class="xnn-header__inner">
       <a href="/index.html" class="xnn-logo">
         <div class="xnn-logo__icon">X</div>
@@ -21,20 +21,76 @@
           <span class="xnn-logo__subtitle">Xana National News</span>
         </div>
       </a>
-      <nav class="xnn-nav">
-        <a href="/index.html" class="xnn-nav__link">Home</a>
+      <nav class="xnn-nav" aria-label="Main navigation">
+        <div class="xnn-nav__item"><a href="/index.html" class="xnn-nav__link">Home</a></div>
+        <div class="xnn-nav__item"><a href="/pages/world.html" class="xnn-nav__link">World</a></div>
+        <div class="xnn-nav__item"><a href="/pages/politics.html" class="xnn-nav__link">Politics</a></div>
+        <div class="xnn-nav__item"><a href="/pages/business.html" class="xnn-nav__link">Business</a></div>
+        <div class="xnn-nav__item"><a href="/pages/technology.html" class="xnn-nav__link">Technology</a></div>
+        <div class="xnn-nav__item"><a href="/pages/sports.html" class="xnn-nav__link">Sports</a></div>
+        <div class="xnn-nav__item"><a href="/pages/entertainment.html" class="xnn-nav__link">Entertainment</a></div>
+        <div class="xnn-nav__item"><a href="/pages/military.html" class="xnn-nav__link">Military</a></div>
       </nav>
     </div>
   </header>
   <main class="xnn-main">
     <section class="container">
-      <h1>Careers</h1>
-      <p>Content for Careers will be added here.</p>
+      <h1>Careers at XNN</h1>
+      <p>Join the team behind independent, high‑impact journalism. We're looking for talented reporters, editors, developers, designers, and support staff.</p>
+      <h2>Open Positions</h2>
+      <ul>
+        <li>Staff Writer – Politics (New York)</li>
+        <li>Data Engineer – Analytics (Remote)</li>
+        <li>Multimedia Producer – Video (Los Angeles)</li>
+        <li>UX Designer – Web Products (Chicago)</li>
+      </ul>
+      <p>To apply, email your résumé and cover letter to <a href="mailto:jobs@xnn.com">jobs@xnn.com</a> with the position title in the subject line.</p>
+      <h2>Benefits</h2>
+      <ul>
+        <li>Competitive salary and stock options</li>
+        <li>Comprehensive health, dental, and vision insurance</li>
+        <li>Flexible work hours and remote‑friendly policies</li>
+        <li>Professional development stipend</li>
+      </ul>
     </section>
   </main>
   <footer class="xnn-footer">
     <div class="container">
-      <p>&copy; 2026 Xana National News (XNN). All rights reserved.</p>
+      <div class="xnn-footer__grid">
+        <div class="xnn-footer__col">
+          <h4>Site</h4>
+          <a href="/pages/corporate/about.html">About Us</a>
+          <a href="/pages/legal/privacy.html">Privacy</a>
+          <a href="/pages/legal/terms.html">Terms</a>
+          <a href="/pages/legal/cookies.html">Cookies</a>
+          <a href="/pages/legal/gdpr.html">GDPR</a>
+          <a href="/pages/legal/corrections.html">Corrections</a>
+          <a href="/pages/legal/editorial-standards.html">Editorial Standards</a>
+        </div>
+        <div class="xnn-footer__col">
+          <h4>Sections</h4>
+          <a href="/pages/world.html">World</a>
+          <a href="/pages/politics.html">Politics</a>
+          <a href="/pages/business.html">Business</a>
+          <a href="/pages/technology.html">Technology</a>
+          <a href="/pages/sports.html">Sports</a>
+          <a href="/pages/entertainment.html">Entertainment</a>
+          <a href="/pages/military.html">Military</a>
+        </div>
+        <div class="xnn-footer__col">
+          <h4>Contact</h4>
+          <a href="mailto:news@xnn.com">news@xnn.com</a>
+          <a href="tel:+1-555-123-4567">+1‑555‑123‑4567</a>
+          <a href="/pages/corporate/press.html">Press Room</a>
+        </div>
+        <div class="xnn-footer__col">
+          <h4>Follow Us</h4>
+          <a href="#"><i class="fab fa-twitter"></i> Twitter</a>
+          <a href="#"><i class="fab fa-facebook"></i> Facebook</a>
+          <a href="#"><i class="fab fa-instagram"></i> Instagram</a>
+          <a href="#"><i class="fab fa-youtube"></i> YouTube</a>
+        </div>
+      </div>
     </div>
   </footer>
 </body>
