@@ -12,8 +12,10 @@
   <link rel="stylesheet" href="../../assets/css/layouts/footer.css">
 </head>
 <body>
-  <header class="xnn-header">
+  <!-- Header from homepage for consistent navigation -->
+  <header class="xnn-header" id="mainHeader">
     <div class="xnn-header__inner">
+      <!-- Logo -->
       <a href="/index.html" class="xnn-logo">
         <div class="xnn-logo__icon">X</div>
         <div class="xnn-logo__text">
@@ -21,21 +23,170 @@
           <span class="xnn-logo__subtitle">Xana National News</span>
         </div>
       </a>
-      <nav class="xnn-nav">
-        <a href="/index.html" class="xnn-nav__link">Home</a>
+      
+      <!-- Navigation -->
+      <nav class="xnn-nav" aria-label="Main navigation">
+        <div class="xnn-nav__item">
+          <a href="/index.html" class="xnn-nav__link">Home</a>
+        </div>
+        <div class="xnn-nav__item">
+          <a href="/pages/world.html" class="xnn-nav__link">World</a>
+        </div>
+        <div class="xnn-nav__item">
+          <a href="/pages/politics.html" class="xnn-nav__link">Politics</a>
+        </div>
+        <div class="xnn-nav__item">
+          <a href="/pages/business.html" class="xnn-nav__link">Business</a>
+        </div>
+        <div class="xnn-nav__item">
+          <a href="/pages/technology.html" class="xnn-nav__link">Technology</a>
+        </div>
+        <div class="xnn-nav__item">
+          <a href="/pages/sports.html" class="xnn-nav__link">Sports</a>
+        </div>
+        <div class="xnn-nav__item">
+          <a href="/pages/entertainment.html" class="xnn-nav__link">Entertainment</a>
+        </div>
+        <div class="xnn-nav__item">
+          <a href="/pages/military.html" class="xnn-nav__link">Military</a>
+        </div>
       </nav>
+      
+      <!-- Header actions omitted for brevity -->
     </div>
   </header>
   <main class="xnn-main">
-    <section class="container">
+    <section class="container xnn-legal">
       <h1>Terms of Service</h1>
-      <p>Content for Terms of Service will be added here.</p>
+      <p><em>Last updated: February 23, 2026</em></p>
+      <p>Welcome to Xana National News ("XNN", "we", "us"). These Terms of Service ("Terms") govern your access to and use of our website and digital services located at <a href="/">xnn.xana.gov</a> (the "Service"). By using or accessing the Service, you agree to be bound by these Terms. If you do not agree, do not use the Service.</p>
+
+      <h2>1. User Conduct</h2>
+      <p>You agree not to:</p>
+      <ul>
+        <li>Use the Service for unlawful purposes or in violation of any applicable laws or regulations.</li>
+        <li>Post or transmit defamatory, obscene, harassing, or hateful content.</li>
+        <li>Impersonate any person or entity or misrepresent your affiliation with any person or entity.</li>
+        <li>Upload malicious code, viruses, or engage in activities that could damage, disable, or impair the Service.</li>
+        <li>Attempt to gain unauthorized access to any portion of the Service, other user accounts, or computer systems.</li>
+      </ul>
+
+      <h2>2. Intellectual Property</h2>
+      <p>The content on this Service, including articles, photographs, videos, graphics, and trademarks, are owned by XNN or licensed to us. All rights are reserved. You may access and display the content for personal, non-commercial use only, provided you maintain all copyright and other proprietary notices.</p>
+
+      <h2>3. Copyright Policy</h2>
+      <p>We respect the intellectual property rights of others. If you believe your work has been copied in a way that constitutes copyright infringement, please send a DMCA notice to <a href="mailto:copyright@xnn.xana.gov">copyright@xnn.xana.gov</a>. Our Copyright Policy is available <a href="/pages/legal/copyright.html">here</a>.</p>
+
+      <h2>4. User‑Generated Content</h2>
+      <p>When you post comments, letters, or other content ("User Content"), you grant XNN a perpetual, worldwide, royalty-free license to reproduce, modify, distribute, and display such content in connection with operating and promoting the Service.</p>
+
+      <h2>5. Privacy</h2>
+      <p>Your use of the Service is also governed by our <a href="/pages/legal/privacy.html">Privacy Policy</a>, which explains how we collect and use your information.</p>
+
+      <h2>6. Disclaimers</h2>
+      <p>The Service and all content are provided "as is" and "as available" without warranties of any kind, either express or implied. XNN disclaims all warranties, including but not limited to merchantability, fitness for a particular purpose, non-infringement, and accuracy of information.</p>
+
+      <h2>7. Limitation of Liability</h2>
+      <p>In no event shall XNN, its affiliates, or licensors be liable for any indirect, incidental, special, consequential or punitive damages arising out of your use of the Service. Our total liability for any claim arising from these Terms shall not exceed $100.</p>
+
+      <h2>8. Indemnification</h2>
+      <p>You agree to indemnify and hold harmless XNN and its officers, directors, employees and agents from any claims or demands, including reasonable attorneys' fees, arising out of your use of the Service or violation of these Terms.</p>
+
+      <h2>9. Termination</h2>
+      <p>We may suspend or terminate your access to the Service at any time for violation of these Terms or for any reason without notice.</p>
+
+      <h2>10. Governing Law</h2>
+      <p>These Terms are governed by the laws of Xana. Any dispute arising under these Terms shall be subject to the exclusive jurisdiction of the courts located in the capital city.</p>
+
+      <h2>11. Changes to Terms</h2>
+      <p>We may revise these Terms from time to time. The updated date above indicates when the most recent changes were made. Your continued use after changes constitutes acceptance.</p>
+
+      <h2>12. Contact</h2>
+      <p>For questions about these Terms, please contact us at <a href="mailto:legal@xnn.xana.gov">legal@xnn.xana.gov</a> or via our <a href="/pages/corporate/contact.html">Contact page</a>.</p>
+
     </section>
   </main>
+
+  <!-- Footer copied from homepage -->
   <footer class="xnn-footer">
     <div class="container">
-      <p>&copy; 2026 Xana National News (XNN). All rights reserved.</p>
+      <div class="xnn-footer__grid">
+        <div class="xnn-footer__brand">
+          <a href="/index.html" class="xnn-logo">
+            <div class="xnn-logo__icon">X</div>
+            <div class="xnn-logo__text">
+              <span class="xnn-logo__title">XNN</span>
+              <span class="xnn-logo__subtitle">Xana National News</span>
+            </div>
+          </a>
+          <p class="xnn-footer__tagline">
+            Your trusted source for breaking news, in-depth analysis, and comprehensive coverage of national and world events.
+          </p>
+          <div class="xnn-footer__social">
+            <a href="#" class="xnn-footer__social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="xnn-footer__social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="xnn-footer__social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="xnn-footer__social-link" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            <a href="#" class="xnn-footer__social-link" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+        <div class="xnn-footer__nav">
+          <h3 class="xnn-footer__nav-title">Sections</h3>
+          <ul class="xnn-footer__nav-list">
+            <li><a href="/index.html">Home</a></li>
+            <li><a href="/pages/world.html">World</a></li>
+            <li><a href="/pages/politics.html">Politics</a></li>
+            <li><a href="/pages/business.html">Business</a></li>
+            <li><a href="/pages/technology.html">Technology</a></li>
+            <li><a href="/pages/sports.html">Sports</a></li>
+            <li><a href="/pages/entertainment.html">Entertainment</a></li>
+            <li><a href="/pages/military.html">Military</a></li>
+          </ul>
+        </div>
+        <div class="xnn-footer__nav">
+          <h3 class="xnn-footer__nav-title">Company</h3>
+          <ul class="xnn-footer__nav-list">
+            <li><a href="/pages/corporate/about.html">About Us</a></li>
+            <li><a href="/pages/corporate/careers.html">Careers</a></li>
+            <li><a href="/pages/corporate/press.html">Press Room</a></li>
+            <li><a href="/pages/corporate/advertise.html">Advertise</a></li>
+            <li><a href="/pages/corporate/contact.html">Contact Us</a></li>
+            <li><a href="/pages/corporate/investors.html">Investor Relations</a></li>
+          </ul>
+        </div>
+        <div class="xnn-footer__nav">
+          <h3 class="xnn-footer__nav-title">Support</h3>
+          <ul class="xnn-footer__nav-list">
+            <li><a href="/pages/legal/help.html">Help Center</a></li>
+            <li><a href="/pages/legal/faq.html">FAQ</a></li>
+            <li><a href="/pages/subscribe.html">Subscriptions</a></li>
+            <li><a href="/pages/account/login.html">Account</a></li>
+            <li><a href="/pages/corporate/sitemap.html">Sitemap</a></li>
+            <li><a href="/pages/corporate/accessibility.html">Accessibility</a></li>
+          </ul>
+        </div>
+        <div class="xnn-footer__nav">
+          <h3 class="xnn-footer__nav-title">Legal</h3>
+          <ul class="xnn-footer__nav-list">
+            <li><a href="/pages/legal/privacy.html">Privacy Policy</a></li>
+            <li><a href="/pages/legal/terms.html">Terms of Service</a></li>
+            <li><a href="/pages/legal/cookies.html">Cookie Policy</a></li>
+            <li><a href="/pages/legal/gdpr.html">GDPR Compliance</a></li>
+            <li><a href="/pages/legal/copyright.html">Copyright</a></li>
+            <li><a href="/pages/legal/dmca.html">DMCA</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="xnn-footer__bottom">
+        <p class="xnn-footer__copyright">&copy; 2026 Xana National News (XNN). All rights reserved.</p>
+        <div class="xnn-footer__badges">
+          <span class="xnn-footer__badge"><i class="fas fa-shield-alt"></i> Secure</span>
+          <span class="xnn-footer__badge"><i class="fas fa-check-circle"></i> Verified</span>
+        </div>
+      </div>
     </div>
   </footer>
+
+  <script type="module" src="/assets/js/main.js"></script>
 </body>
 </html>
