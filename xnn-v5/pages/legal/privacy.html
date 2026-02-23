@@ -12,8 +12,10 @@
   <link rel="stylesheet" href="../../assets/css/layouts/footer.css">
 </head>
 <body>
-  <header class="xnn-header">
+  <!-- Header copied from homepage for consistency -->
+  <header class="xnn-header" id="mainHeader">
     <div class="xnn-header__inner">
+      <!-- Logo -->
       <a href="/index.html" class="xnn-logo">
         <div class="xnn-logo__icon">X</div>
         <div class="xnn-logo__text">
@@ -21,21 +23,168 @@
           <span class="xnn-logo__subtitle">Xana National News</span>
         </div>
       </a>
-      <nav class="xnn-nav">
-        <a href="/index.html" class="xnn-nav__link">Home</a>
+      
+      <!-- Navigation -->
+      <nav class="xnn-nav" aria-label="Main navigation">
+        <div class="xnn-nav__item"><a href="/index.html" class="xnn-nav__link">Home</a></div>
+        <div class="xnn-nav__item"><a href="/pages/world.html" class="xnn-nav__link">World</a></div>
+        <div class="xnn-nav__item"><a href="/pages/politics.html" class="xnn-nav__link">Politics</a></div>
+        <div class="xnn-nav__item"><a href="/pages/business.html" class="xnn-nav__link">Business</a></div>
+        <div class="xnn-nav__item"><a href="/pages/technology.html" class="xnn-nav__link">Technology</a></div>
+        <div class="xnn-nav__item"><a href="/pages/sports.html" class="xnn-nav__link">Sports</a></div>
+        <div class="xnn-nav__item"><a href="/pages/entertainment.html" class="xnn-nav__link">Entertainment</a></div>
+        <div class="xnn-nav__item"><a href="/pages/military.html" class="xnn-nav__link">Military</a></div>
       </nav>
+      
+      <!-- Header actions (search, subscribe, user) omitted for brevity -->
     </div>
   </header>
   <main class="xnn-main">
-    <section class="container">
+    <section class="container xnn-legal">
       <h1>Privacy Policy</h1>
-      <p>Content for Privacy Policy will be added here.</p>
+      <p><em>Last updated: February 23, 2026</em></p>
+      <p>Xana National News ("XNN", "we", "us") respects your privacy and is committed to protecting your personal information. This Privacy Policy explains how we collect, use, disclose, and safeguard your data when you visit our website <a href="/">xnn.xana.gov</a> and related services (collectively, the "Service"). By using the Service, you agree to the terms of this policy.</p>
+
+      <h2>Information We Collect</h2>
+      <ul>
+        <li><strong>Contact details:</strong> name, email address, postal address, telephone number when you subscribe to newsletters or submit inquiries.</li>
+        <li><strong>Account information:</strong> username, hashed password, preferences for registered users.</li>
+        <li><strong>Usage data:</strong> pages visited, time spent, links clicked, referring URLs, IP addresses, browser and device information.</li>
+        <li><strong>Cookies &amp; tracking technologies:</strong> cookies, web beacons, pixels, local storage used to personalize content and analyze site performance.</li>
+        <li><strong>User‑generated content:</strong> comments, forum posts, survey responses, and any information you choose to submit publicly.</li>
+      </ul>
+
+      <h2>How We Use Your Information</h2>
+      <p>Your information is used for the following purposes:</p>
+      <ul>
+        <li>To provide, maintain, and improve the Service.</li>
+        <li>To personalize your experience and deliver tailored content, recommendations and advertisements.</li>
+        <li>To communicate with you about news alerts, newsletters, promotions, and updates.</li>
+        <li>To respond to your comments, questions, and requests.</li>
+        <li>To monitor and analyze trends, usage, and activities in connection with the Service.</li>
+        <li>To detect, investigate and prevent fraudulent or illegal activity.</li>
+        <li>To comply with legal obligations and enforce our policies.</li>
+      </ul>
+
+      <h2>Cookies and Tracking Technologies</h2>
+      <p>We use cookies and similar technologies to collect information and provide certain features on the Service. You can control cookie settings through your browser; however, disabling cookies may affect functionality.</p>
+
+      <h2>Sharing Your Information</h2>
+      <p>We may share your information with:</p>
+      <ul>
+        <li><strong>Service providers</strong> who perform functions on our behalf (e.g., analytics, hosting, email delivery).</li>
+        <li><strong>Affiliated organizations</strong> for joint initiatives or services.</li>
+        <li><strong>Legal authorities</strong> when required by law or to protect rights and safety.</li>
+        <li><strong>Buyer or successor entities</strong> in connection with a merger, acquisition, or sale of assets.</li>
+      </ul>
+
+      <h2>Your Choices and Rights</h2>
+      <p>You may:</p>
+      <ul>
+        <li>Access, update, or delete your account information by logging into your profile.</li>
+        <li>Opt out of receiving promotional emails by following the unsubscribe instructions included in those messages.</li>
+        <li>Adjust cookie preferences via your browser settings or our consent banner.</li>
+        <li>Submit requests concerning your personal data to <a href="/pages/corporate/contact.html">our contact page</a>.</li>
+      </ul>
+
+      <h2>Data Security</h2>
+      <p>We employ industry-standard security measures to protect your data, including encryption, access controls, and regular security assessments. However, no system is completely secure; we cannot guarantee absolute protection.</p>
+
+      <h2>Children’s Privacy</h2>
+      <p>The Service is not directed to children under 13. We do not knowingly collect personal information from children under 13. If we learn we have collected such information, we will promptly delete it.</p>
+
+      <h2>International Transfers</h2>
+      <p>We operate globally; data may be transferred to and processed in countries other than your home country. By using the Service, you consent to such transfers.</p>
+
+      <h2>Changes to This Policy</h2>
+      <p>We may update this Privacy Policy from time to time. We will post the revised policy with a new "Last updated" date. Continued use after changes constitutes acceptance.</p>
+
+      <h2>Contact Us</h2>
+      <p>If you have questions about this Privacy Policy, please contact us at <a href="mailto:privacy@xnn.xana.gov">privacy@xnn.xana.gov</a> or via our <a href="/pages/corporate/contact.html">Contact page</a>.</p>
+
     </section>
   </main>
+
+  <!-- Footer copied from homepage -->
   <footer class="xnn-footer">
     <div class="container">
-      <p>&copy; 2026 Xana National News (XNN). All rights reserved.</p>
+      <div class="xnn-footer__grid">
+        <div class="xnn-footer__brand">
+          <a href="/index.html" class="xnn-logo">
+            <div class="xnn-logo__icon">X</div>
+            <div class="xnn-logo__text">
+              <span class="xnn-logo__title">XNN</span>
+              <span class="xnn-logo__subtitle">Xana National News</span>
+            </div>
+          </a>
+          <p class="xnn-footer__tagline">
+            Your trusted source for breaking news, in-depth analysis, and comprehensive coverage of national and world events.
+          </p>
+          <div class="xnn-footer__social">
+            <a href="#" class="xnn-footer__social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="xnn-footer__social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="xnn-footer__social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="xnn-footer__social-link" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            <a href="#" class="xnn-footer__social-link" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+        <div class="xnn-footer__nav">
+          <h3 class="xnn-footer__nav-title">Sections</h3>
+          <ul class="xnn-footer__nav-list">
+            <li><a href="/index.html">Home</a></li>
+            <li><a href="/pages/world.html">World</a></li>
+            <li><a href="/pages/politics.html">Politics</a></li>
+            <li><a href="/pages/business.html">Business</a></li>
+            <li><a href="/pages/technology.html">Technology</a></li>
+            <li><a href="/pages/sports.html">Sports</a></li>
+            <li><a href="/pages/entertainment.html">Entertainment</a></li>
+            <li><a href="/pages/military.html">Military</a></li>
+          </ul>
+        </div>
+        <div class="xnn-footer__nav">
+          <h3 class="xnn-footer__nav-title">Company</h3>
+          <ul class="xnn-footer__nav-list">
+            <li><a href="/pages/corporate/about.html">About Us</a></li>
+            <li><a href="/pages/corporate/careers.html">Careers</a></li>
+            <li><a href="/pages/corporate/press.html">Press Room</a></li>
+            <li><a href="/pages/corporate/advertise.html">Advertise</a></li>
+            <li><a href="/pages/corporate/contact.html">Contact Us</a></li>
+            <li><a href="/pages/corporate/investors.html">Investor Relations</a></li>
+          </ul>
+        </div>
+        <div class="xnn-footer__nav">
+          <h3 class="xnn-footer__nav-title">Support</h3>
+          <ul class="xnn-footer__nav-list">
+            <li><a href="/pages/legal/help.html">Help Center</a></li>
+            <li><a href="/pages/legal/faq.html">FAQ</a></li>
+            <li><a href="/pages/subscribe.html">Subscriptions</a></li>
+            <li><a href="/pages/account/login.html">Account</a></li>
+            <li><a href="/pages/corporate/sitemap.html">Sitemap</a></li>
+            <li><a href="/pages/corporate/accessibility.html">Accessibility</a></li>
+          </ul>
+        </div>
+        <div class="xnn-footer__nav">
+          <h3 class="xnn-footer__nav-title">Legal</h3>
+          <ul class="xnn-footer__nav-list">
+            <li><a href="/pages/legal/privacy.html">Privacy Policy</a></li>
+            <li><a href="/pages/legal/terms.html">Terms of Service</a></li>
+            <li><a href="/pages/legal/cookies.html">Cookie Policy</a></li>
+            <li><a href="/pages/legal/gdpr.html">GDPR Compliance</a></li>
+            <li><a href="/pages/legal/copyright.html">Copyright</a></li>
+            <li><a href="/pages/legal/dmca.html">DMCA</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="xnn-footer__bottom">
+        <p class="xnn-footer__copyright">&copy; 2026 Xana National News (XNN). All rights reserved.</p>
+        <div class="xnn-footer__badges">
+          <span class="xnn-footer__badge"><i class="fas fa-shield-alt"></i> Secure</span>
+          <span class="xnn-footer__badge"><i class="fas fa-check-circle"></i> Verified</span>
+        </div>
+      </div>
     </div>
   </footer>
+
+  <script type="module" src="/assets/js/main.js"></script>
 </body>
 </html>

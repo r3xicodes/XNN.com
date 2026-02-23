@@ -12,9 +12,10 @@
   <link rel="stylesheet" href="../../assets/css/layouts/footer.css">
 </head>
 <body>
-  <!-- Minimal header -->
-  <header class="xnn-header">
+  <!-- Header copied from homepage for consistent navigation -->
+  <header class="xnn-header" id="mainHeader">
     <div class="xnn-header__inner">
+      <!-- Logo -->
       <a href="/index.html" class="xnn-logo">
         <div class="xnn-logo__icon">X</div>
         <div class="xnn-logo__text">
@@ -22,23 +23,231 @@
           <span class="xnn-logo__subtitle">Xana National News</span>
         </div>
       </a>
-      <nav class="xnn-nav">
-        <a href="/index.html" class="xnn-nav__link">Home</a>
+      
+      <!-- Main Navigation -->
+      <nav class="xnn-nav" aria-label="Main navigation">
+        <div class="xnn-nav__item">
+          <a href="/index.html" class="xnn-nav__link active">Home</a>
+        </div>
+        <div class="xnn-nav__item">
+          <a href="/pages/world.html" class="xnn-nav__link">
+            World
+            <i class="fas fa-chevron-down"></i>
+          </a>
+        </div>
+        <div class="xnn-nav__item">
+          <a href="/pages/politics.html" class="xnn-nav__link">Politics</a>
+        </div>
+        <div class="xnn-nav__item">
+          <a href="/pages/business.html" class="xnn-nav__link">Business</a>
+        </div>
+        <div class="xnn-nav__item">
+          <a href="/pages/technology.html" class="xnn-nav__link">Technology</a>
+        </div>
+        <div class="xnn-nav__item">
+          <a href="/pages/sports.html" class="xnn-nav__link">Sports</a>
+        </div>
+        <div class="xnn-nav__item">
+          <a href="/pages/entertainment.html" class="xnn-nav__link">Entertainment</a>
+        </div>
+        <div class="xnn-nav__item">
+          <a href="/pages/military.html" class="xnn-nav__link xnn-dropdown__item--highlight">
+            <i class="fas fa-shield-alt"></i> Military
+          </a>
+        </div>
       </nav>
+      
+      <!-- Header Actions -->
+      <div class="xnn-header__actions">
+        <button class="xnn-header__search-btn" id="searchBtn" aria-label="Search">
+          <i class="fas fa-search"></i>
+        </button>
+        <a href="/pages/subscribe.html" class="xnn-header__subscribe-btn">
+          Subscribe
+        </a>
+        <div class="xnn-user-menu" id="userMenu">
+          <button class="xnn-user-menu__trigger" id="userMenuTrigger">
+            <div class="xnn-user-menu__avatar">G</div>
+            <span class="xnn-user-menu__name">Guest</span>
+            <i class="fas fa-chevron-down"></i>
+          </button>
+          <div class="xnn-user-menu__dropdown">
+            <div class="xnn-user-menu__header">
+              <span class="xnn-user-menu__role">
+                <i class="fas fa-user"></i> Guest
+              </span>
+              <p class="xnn-user-menu__email">Sign in to access more features</p>
+            </div>
+            <div class="xnn-user-menu__list">
+              <a href="/pages/account/login.html" class="xnn-user-menu__link">
+                <i class="fas fa-sign-in-alt"></i>
+                Sign In
+              </a>
+              <a href="/pages/account/register.html" class="xnn-user-menu__link">
+                <i class="fas fa-user-plus"></i>
+                Create Account
+              </a>
+              <a href="/pages/newsroom/dashboard.html" class="xnn-user-menu__link">
+                <i class="fas fa-newspaper"></i>
+                Newsroom Portal
+              </a>
+              <a href="/pages/studio/control-room.html" class="xnn-user-menu__link">
+                <i class="fas fa-video"></i>
+                Broadcast Studio
+              </a>
+              <a href="/pages/intelligence/command-center.html" class="xnn-user-menu__link">
+                <i class="fas fa-satellite-dish"></i>
+                Intelligence Dashboard
+              </a>
+            </div>
+          </div>
+        </div>
+        <button class="xnn-header__menu-btn" id="mobileMenuBtn" aria-label="Open menu">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
     </div>
   </header>
 
   <main class="xnn-main">
-    <section class="container">
-      <h1>About Us</h1>
-      <p>Content for About Us will be added here.</p>
+    <section class="container xnn-about">
+      <h1>About Xana National News</h1>
+      <p>XNN is the leading global news organisation headquartered in the capital city of Xana. For over four decades we have delivered breaking news, investigative journalism and multimedia storytelling to millions of readers across six continents. Our commitment to independence, accuracy and public service journalism has made us a trusted voice in times of crisis and celebration.</p>
+      
+      <h2>Our History</h2>
+      <p>Founded in 1982 as the state broadcaster’s news division, XNN began as a modest wire service serving government agencies. The collapse of the old regime in 1990 and the country’s subsequent embrace of democracy transformed our mission. We were re‑launched in 1992 as Xana National News, a public‑interest news organisation owned by a mixed public‑private trust. Over the next three decades we expanded our footprint with bureaus in New York, London, Nairobi, Tokyo, São Paulo and Sydney.</p>
+      <p>Key milestones:</p>
+      <ul>
+        <li><strong>1992</strong> – Rebranded as XNN with editorial independence enshrined in law.</li>
+        <li><strong>2001</strong> – Launched first international bureau in London.</li>
+        <li><strong>2008</strong> – Began digital transition; website attracted 10 million monthly users within a year.</li>
+        <li><strong>2015</strong> – Expanded into broadcast with XNN-TV and XNN Radio.</li>
+        <li><strong>2023</strong> – Introduced our strategic intelligence division and global investigative consortium.</li>
+      </ul>
+      
+      <h2>Mission &amp; Values</h2>
+      <p>Our mission is to inform, engage and empower communities by delivering accurate, impartial and courageous journalism. We stand by the following core values:</p>
+      <ul>
+        <li><strong>Integrity:</strong> We report the truth, even when it is uncomfortable.</li>
+        <li><strong>Independence:</strong> We operate free from political or commercial influence.</li>
+        <li><strong>Excellence:</strong> We pursue the highest standards in reporting and storytelling.</li>
+        <li><strong>Inclusivity:</strong> We amplify diverse voices and examine power structures.</li>
+        <li><strong>Innovation:</strong> We embrace new technologies to reach audiences wherever they are.</li>
+      </ul>
+      
+      <h2>Global Bureaus &amp; Partnerships</h2>
+      <p>With more than 80 bureaus around the world and partnerships with regional media organisations, XNN maintains a truly global presence. Our network is designed to provide on‑the‑ground coverage of events big and small, from conflict zones to community festivals.</p>
+      
+      <h2>Leadership</h2>
+      <p>Under the guidance of our Board of Trustees, a team of experienced journalists and executives drives XNN forward. Key leaders include:</p>
+      <ul>
+        <li><strong>Maria Elena Torres</strong> – Chief Executive Officer, former foreign correspondent and bureau chief.</li>
+        <li><strong>David Singh</strong> – Editor‑in‑Chief, oversees newsroom operations globally.</li>
+        <li><strong>Professor Laila Hamid</strong> – Chair of the Board of Trustees, academic and media law specialist.</li>
+      </ul>
+      
+      <h2>Awards &amp; Recognition</h2>
+      <p>Our investigative teams have won numerous international awards, including the Golden Press Freedom Prize (2010), three Pulitzer Prizes (2013, 2017, 2022) and the World Digital Media Award for Innovation (2024).</p>
+      
+      <p class="xnn-about__updated"><em>Last updated: February 23, 2026</em></p>
     </section>
   </main>
 
   <footer class="xnn-footer">
     <div class="container">
-      <p>&copy; 2026 Xana National News (XNN). All rights reserved.</p>
+      <div class="xnn-footer__grid">
+        <div class="xnn-footer__brand">
+          <a href="/index.html" class="xnn-logo">
+            <div class="xnn-logo__icon">X</div>
+            <div class="xnn-logo__text">
+              <span class="xnn-logo__title">XNN</span>
+              <span class="xnn-logo__subtitle">Xana National News</span>
+            </div>
+          </a>
+          <p class="xnn-footer__tagline">
+            Your trusted source for breaking news, in-depth analysis, and comprehensive coverage of national and world events.
+          </p>
+          <div class="xnn-footer__social">
+            <a href="#" class="xnn-footer__social-link" aria-label="Facebook">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="#" class="xnn-footer__social-link" aria-label="Twitter">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a href="#" class="xnn-footer__social-link" aria-label="Instagram">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="#" class="xnn-footer__social-link" aria-label="YouTube">
+              <i class="fab fa-youtube"></i>
+            </a>
+            <a href="#" class="xnn-footer__social-link" aria-label="LinkedIn">
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+          </div>
+        </div>
+        <div class="xnn-footer__nav">
+          <h3 class="xnn-footer__nav-title">Sections</h3>
+          <ul class="xnn-footer__nav-list">
+            <li><a href="/index.html">Home</a></li>
+            <li><a href="/pages/world.html">World</a></li>
+            <li><a href="/pages/politics.html">Politics</a></li>
+            <li><a href="/pages/business.html">Business</a></li>
+            <li><a href="/pages/technology.html">Technology</a></li>
+            <li><a href="/pages/sports.html">Sports</a></li>
+            <li><a href="/pages/entertainment.html">Entertainment</a></li>
+            <li><a href="/pages/military.html">Military</a></li>
+          </ul>
+        </div>
+        <div class="xnn-footer__nav">
+          <h3 class="xnn-footer__nav-title">Company</h3>
+          <ul class="xnn-footer__nav-list">
+            <li><a href="/pages/corporate/about.html">About Us</a></li>
+            <li><a href="/pages/corporate/careers.html">Careers</a></li>
+            <li><a href="/pages/corporate/press.html">Press Room</a></li>
+            <li><a href="/pages/corporate/advertise.html">Advertise</a></li>
+            <li><a href="/pages/corporate/contact.html">Contact Us</a></li>
+            <li><a href="/pages/corporate/investors.html">Investor Relations</a></li>
+          </ul>
+        </div>
+        <div class="xnn-footer__nav">
+          <h3 class="xnn-footer__nav-title">Support</h3>
+          <ul class="xnn-footer__nav-list">
+            <li><a href="/pages/legal/help.html">Help Center</a></li>
+            <li><a href="/pages/legal/faq.html">FAQ</a></li>
+            <li><a href="/pages/subscribe.html">Subscriptions</a></li>
+            <li><a href="/pages/account/login.html">Account</a></li>
+            <li><a href="/pages/corporate/sitemap.html">Sitemap</a></li>
+            <li><a href="/pages/corporate/accessibility.html">Accessibility</a></li>
+          </ul>
+        </div>
+        <div class="xnn-footer__nav">
+          <h3 class="xnn-footer__nav-title">Legal</h3>
+          <ul class="xnn-footer__nav-list">
+            <li><a href="/pages/legal/privacy.html">Privacy Policy</a></li>
+            <li><a href="/pages/legal/terms.html">Terms of Service</a></li>
+            <li><a href="/pages/legal/cookies.html">Cookie Policy</a></li>
+            <li><a href="/pages/legal/gdpr.html">GDPR Compliance</a></li>
+            <li><a href="/pages/legal/copyright.html">Copyright</a></li>
+            <li><a href="/pages/legal/dmca.html">DMCA</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="xnn-footer__bottom">
+        <p class="xnn-footer__copyright">
+          &copy; 2026 Xana National News (XNN). All rights reserved.
+        </p>
+        <div class="xnn-footer__badges">
+          <span class="xnn-footer__badge">
+            <i class="fas fa-shield-alt"></i> Secure
+          </span>
+          <span class="xnn-footer__badge">
+            <i class="fas fa-check-circle"></i> Verified
+          </span>
+        </div>
+      </div>
     </div>
   </footer>
+
+  <script type="module" src="/assets/js/main.js"></script>
 </body>
 </html>
